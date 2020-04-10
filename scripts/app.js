@@ -64,25 +64,25 @@ function init() {
   //* some kind of thing that goes accross the screen on a loop I guess
 
   //define a loop
-  let truckPositionX = 0
+  const truckPositionX = 0
   const truckPositionY = 8
 
-  let num = 0
+  cells[truckPositionY][truckPositionX].classList.add('truck')
 
-  const truckTimer = setInterval(() => {
-    num++
-    console.log('I am a truck out to get you')
-    cells[truckPositionY][truckPositionX].classList.add('truck')
-    truckPositionX++
+  // let num = 0
 
-    if (num > 10) {
-      clearInterval(truckTimer)
-    }
-    cells[truckPositionY][truckPositionX].classList.remove('truck')
-  }, 500)
+  // const truckTimer = setInterval(() => {
+  //   num++
+  //   if (num > 9) {
+  //     clearInterval(truckTimer)
+  //   } else {
+  //     console.log('I am a truck out to get you ' + num)
+  //     cells[truckPositionY][truckPositionX].classList.remove('truck')
+  //     truckPositionX++
+  //     cells[truckPositionY][truckPositionX].classList.add('truck')
+  //   }
+  // }, 500)
 
-
-  // add a class
 
 
 
@@ -91,6 +91,14 @@ function init() {
 
 
   //* some kind of thing that checks for a condition where two classes are in the same div and plays some kind of collision thing
+
+  function checkForCollision() {
+    cells.filter(div => {
+      return div === div.classList.contains('truck') && div.classList.contains('frog')
+    })
+  }
+
+  console.log(checkForCollision())
 
   //* some kind of thing where it says the player has won once the player moves into a certain area on the game board
 
