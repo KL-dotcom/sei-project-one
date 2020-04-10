@@ -3,62 +3,57 @@ function init() {
   //* get the grid
   const grid = document.querySelector('.grid')
   const cells = []
+  const height = 10
   const width = 10
-  const cellCount = width * width
 
-  function createCells(startingPosition) {
-    for (let i = 0; i < cellCount; i++) {
-      const cell = document.createElement('div')
-      grid.appendChild(cell)
-      cell.textContent = i
-      cells.push(cell)
+  let frogPositionX = 0
+  let frogPositionY = 0
+
+  function createCells() {
+    for (let y = 0; y < height; y++) {
+      cells[y] = []
+      for (let x = 0; x < width; x++) {
+        const cell = document.createElement('div')
+        grid.appendChild(cell)
+        cell.textContent = 'x:' + x + ', y:' + y
+        cells[y][x] = cell
+      }
     }
-    cells[startingPosition].classList.add('frog')
+    cells[frogPositionY][frogPositionX].classList.add('frog')
   }
   createCells(0)
 
-
-
-
   //* some kind of thing that can move around the grid
-
-  // game variables
-
-  let frogPosition = 0
-
-
   // execution
 
 
   function handleKeyUp(event) {
-    cells[frogPosition].classList.remove('frog')
-    const x = frogPosition % width
-    const y = Math.floor(frogPosition / width)
+    cells[frogPositionY][frogPositionX].classList.remove('frog')
     switch (event.keyCode) {
       case 39:
-        if (x < width - 1) frogPosition++
+        if (frogPositionX < width - 1) frogPositionX++
         console.log('move right')
         break
       case 37:
-        if (x > 0) frogPosition--
+        if (frogPositionX > 0) frogPositionX--
         console.log('move left')
         break
       case 38:
-        if (y > 0) frogPosition -= width
+        if (frogPositionY > 0) frogPositionY--
         console.log('move up')
         break
       case 40:
-        if (y < width - 1) frogPosition += width
+        if (frogPositionY < width - 1) frogPositionY++
         console.log('move down')
         break
       default:
         console.log('nope')
     }
-    cells[frogPosition].classList.add('frog')
+    cells[frogPositionY][frogPositionX].classList.add('frog')
   }
 
 
-  // event listerner
+  // event listener
 
 
   document.addEventListener('keyup', handleKeyUp)
@@ -67,6 +62,30 @@ function init() {
 
 
   //* some kind of thing that goes accross the screen on a loop I guess
+
+  //define a loop
+  let truckPositionX = 0
+  const truckPositionY = 8
+
+  let num = 0
+
+  const truckTimer = setInterval(() => {
+    num++
+    console.log('I am a truck out to get you')
+    cells[truckPositionY][truckPositionX].classList.add('truck')
+    truckPositionX++
+
+    if (num > 10) {
+      clearInterval(truckTimer)
+    }
+    cells[truckPositionY][truckPositionX].classList.remove('truck')
+  }, 500)
+
+
+  // add a class
+
+
+
 
 
 
