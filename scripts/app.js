@@ -15,7 +15,7 @@ function init() {
       for (let x = 0; x < width; x++) {
         const cell = document.createElement('div')
         grid.appendChild(cell)
-        cell.textContent = 'x:' + x + ', y:' + y
+        cell.textContent = 'y:' + y + ', x:' + x
         cells[y][x] = cell
       }
     }
@@ -23,13 +23,12 @@ function init() {
   }
   createCells(0)
 
-  //* some kind of thing that can move around the grid
-  // execution
+  // making the frog
 
   const frog = {
-    lives: 3,
     positionY: 0,
     positionX: 0,
+    lives: 3,
     keyPressed: null,
     handlePlayerInput(event) {
       frog.keyPressed = event.keyCode
@@ -59,9 +58,16 @@ function init() {
           console.log('no player input')
       }
       cells[frog.positionY][frog.positionX].classList.add('frog')
+    },
+    numberOfLives() {
+      console.log(this.lives)
+      if (this.lives === 0) {
+        clearInterval(gameTimer)
+      }
     }
-
   }
+
+  // making the enemies
 
   const truck = {
     positionY: 8,
@@ -79,9 +85,10 @@ function init() {
     },
     collision() {
       if (this.positionY === frog.positionY && this.positionX === frog.positionX) {
-        cells[truck.positionY][truck.positionX].classList.add('boom')
+        console.log('you lose')
         frog.positionY = 0
         frog.positionX = 0
+        frog.lives = frog.lives - 1
       }
 
 
@@ -89,17 +96,14 @@ function init() {
     }
   }
 
-  const num = 0
+  // calling the game loop
 
   const gameTimer = setInterval(() => {
     frog.move()
     truck.move()
     truck.collision()
+    frog.numberOfLives()
   }, 10)
-
-
-
-
 
 
 
