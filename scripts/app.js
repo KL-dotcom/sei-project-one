@@ -32,21 +32,23 @@ function init() {
 
   function handleKeyUp(event) {
     cells[frogPosition].classList.remove('frog')
+    const x = frogPosition % width
+    const y = Math.floor(frogPosition / width)
     switch (event.keyCode) {
       case 39:
-        frogPosition++
+        if (x < width - 1) frogPosition++
         console.log('move right')
         break
       case 37:
-        frogPosition--
+        if (x > 0) frogPosition--
         console.log('move left')
         break
       case 38:
-        frogPosition -= width
+        if (y > 0) frogPosition -= width
         console.log('move up')
         break
       case 40:
-        frogPosition += width
+        if (y < width - 1) frogPosition += width
         console.log('move down')
         break
       default:
@@ -69,18 +71,15 @@ function init() {
 
 
 
-
-
-
   //* some kind of thing that checks for a condition where two classes are in the same div and plays some kind of collision thing
 
-  // some kind of thing where it says the player has won once the player moves into a certain area on the game board
+  //* some kind of thing where it says the player has won once the player moves into a certain area on the game board
 
 
-  // some kind of start button that activates the above, maybe something that could also come up as a 'play again' type of thing
+  //* some kind of start button that activates the above, maybe something that could also come up as a 'play again' type of thing
 
 
-  // maybe a timer or something that would finish it all, as well as being finished by winning
+  //* maybe a timer or something that would finish it all, as well as being finished by winning
 
 
 
