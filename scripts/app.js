@@ -58,55 +58,74 @@ function init() {
 
   document.addEventListener('keyup', handleKeyUp)
 
+  //* some kind of thing that checks for a condition where two classes are in the same div and plays some kind of collision thing
 
 
+  // execution
+  function collision(event) {
+    if (!event.target.classList.contains('truck')) return
+    console.log('boom')
+  }
+
+  // event
+
+  document.addEventListener('keyup', collision)
 
   //* some kind of thing that goes accross the screen on a loop I guess
 
   //define a loop
-  const truckPositionX = 0
+  let truckPositionX = 0
   const truckPositionY = 8
 
   cells[truckPositionY][truckPositionX].classList.add('truck')
 
-  // let num = 0
+  let num = 0
 
-  // const truckTimer = setInterval(() => {
-  //   num++
-  //   if (num > 9) {
-  //     clearInterval(truckTimer)
-  //   } else {
-  //     console.log('I am a truck out to get you ' + num)
-  //     cells[truckPositionY][truckPositionX].classList.remove('truck')
-  //     truckPositionX++
-  //     cells[truckPositionY][truckPositionX].classList.add('truck')
-  //   }
-  // }, 500)
+  const truckTimer = setInterval(() => {
+    num++
+    if (num > 9) {
+      clearInterval(truckTimer)
+    } else {
 
+      console.log('I am a truck out to get you ' + num)
+      cells[truckPositionY][truckPositionX].classList.remove('truck')
+      truckPositionX++
+      cells[truckPositionY][truckPositionX].classList.add('truck')
 
-
+      //* some kind of thing where it says the player has won once the player moves into a certain area on the game board
 
 
+      //* some kind of start button that activates the above, maybe something that could also come up as a 'play again' type of thing
+
+
+      //* maybe a timer or something that would finish it all, as well as being finished by winning
 
 
 
-  //* some kind of thing that checks for a condition where two classes are in the same div and plays some kind of collision thing
-
-  function checkForCollision() {
-    cells.filter(div => {
-      return div === div.classList.contains('truck') && div.classList.contains('frog')
-    })
-  }
-
-  console.log(checkForCollision())
-
-  //* some kind of thing where it says the player has won once the player moves into a certain area on the game board
 
 
-  //* some kind of start button that activates the above, maybe something that could also come up as a 'play again' type of thing
 
 
-  //* maybe a timer or something that would finish it all, as well as being finished by winning
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+  }, 500)
+
 
 
 
