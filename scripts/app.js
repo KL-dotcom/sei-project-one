@@ -6,9 +6,6 @@ function init() {
   const height = 10
   const width = 10
 
-  // let frogPositionX = 0
-  // let frogPositionY = 0
-
   function createCells() {
     for (let y = 0; y < height; y++) {
       cells[y] = []
@@ -21,13 +18,25 @@ function init() {
     }
 
   }
+
   createCells(0)
+
+  // make the water
+
+  function water() {
+    for (let y = 1; y <= 4; y++) {
+      for (let x = 0; x < width - 1; x++) {
+        cells[y][x].classList.add('water')
+      }
+    }
+  }
+  water()
 
   // making the frog
 
   const frog = {
-    positionY: 0,
-    positionX: 0,
+    positionY: 9,
+    positionX: 4,
     lives: 3,
     keyPressed: null,
     handlePlayerInput(event) {
@@ -89,12 +98,14 @@ function init() {
     collision() {
       if (this.positionY === frog.positionY && this.positionX === frog.positionX) {
         console.log('you lose')
-        frog.positionY = 0
-        frog.positionX = 0
+        frog.positionY = 9
+        frog.positionX = 4
         frog.lives = frog.lives - 1
       }
     }
-  }
+
+
+
 
   class Win {
     constructor(positionY, positionX) {
@@ -112,10 +123,11 @@ function init() {
   // making new objects
 
   const winOne = new Win(0, 5)
-  const truck = new Enemy(8, -1, 500, 'truck')
+  const truck = new Enemy(8, -1, 300, 'truck')
   const car = new Enemy(6, -1, 500, 'car')
-  const lorry = new Enemy(4, -1, 500, 'truck')
-
+  const lorry = new Enemy(4, -1, 450, 'truck')
+  const log = new Enemy(2, -1, 200, 'car')
+  const logTwo = new Enemy(1, -1, 230, 'car')
 
   // calling the game loop
 
@@ -127,6 +139,10 @@ function init() {
     car.collision()
     lorry.move()
     lorry.collision()
+    log.move()
+    log.collision()
+    logTwo.move()
+    logTwo.collision()
     frog.numberOfLives()
     winOne.youWin()
   }, 10)
