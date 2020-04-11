@@ -67,22 +67,25 @@ function init() {
     }
   }
 
-  // making the enemies
-
-  const truck = {
-    positionY: 8,
-    positionX: -1,
-    lastMovedAt: Date.now(),
+  //making classes
+  class Enemy {
+    constructor(positionY, positionX, speed, temp) {
+      this.positionY = positionY
+      this.positionX = positionX
+      this.speed = speed
+      this.temp = temp
+    }
+    lastMovedAt = Date.now()
     move() {
-      if (Date.now() - this.lastMovedAt > 500) {
+      if (Date.now() - this.lastMovedAt > this.speed) {
         if (this.positionX >= 0) {
-          cells[this.positionY][this.positionX].classList.remove('truck')
+          cells[this.positionY][this.positionX].classList.remove(this.temp)
         }
         this.positionX = (this.positionX + 1) % width
-        cells[this.positionY][this.positionX].classList.add('truck')
+        cells[this.positionY][this.positionX].classList.add(this.temp)
         this.lastMovedAt = Date.now()
       }
-    },
+    }
     collision() {
       if (this.positionY === frog.positionY && this.positionX === frog.positionX) {
         console.log('you lose')
@@ -90,11 +93,29 @@ function init() {
         frog.positionX = 0
         frog.lives = frog.lives - 1
       }
-
-
-
     }
   }
+
+  class Win {
+    constructor(positionY, positionX) {
+      this.positionX = positionX
+      this.positionY = positionY
+    }
+    youWin() {
+      if (this.positionY === frog.positionY && this.positionX === frog.positionX) {
+        console.log('You win')
+        clearInterval(gameTimer)
+      }
+    }
+  }
+
+  // making new objects
+
+  const winOne = new Win(0, 5)
+  const truck = new Enemy(8, -1, 500, 'truck')
+  const car = new Enemy(6, -1, 500, 'car')
+  const lorry = new Enemy(4, -1, 500, 'truck')
+
 
   // calling the game loop
 
@@ -102,7 +123,12 @@ function init() {
     frog.move()
     truck.move()
     truck.collision()
+    car.move()
+    car.collision()
+    lorry.move()
+    lorry.collision()
     frog.numberOfLives()
+    winOne.youWin()
   }, 10)
 
 
