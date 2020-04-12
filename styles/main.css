@@ -54,4 +54,11 @@ body {
   z-index: 1;
 }
 
-.water {}
+/* .water {
+  background-color: lightblue;
+} */
+
+.water.log {
+  background-color: brown;
+  z-index: 1;
+}

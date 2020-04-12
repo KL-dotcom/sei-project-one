@@ -98,7 +98,7 @@ function init() {
   }
 
   //making classes
-  class Enemy {
+  class Entity {
     constructor(positionY, positionX, speed, temp) {
       this.positionY = positionY
       this.positionX = positionX
@@ -126,7 +126,27 @@ function init() {
       }
     }
   }
+  class WaterPlatform extends Entity {
+    constructor(positionY, positionX, speed, temp) {
+      super(positionY, positionX, speed, temp)
+    }
+    frogMove() {
+      this.move()
+      console.log('this is step one')
+      if (this.positionY === frog.positionY && this.positionX === frog.positionX) {
+        console.log('this is step two')
+        if (frog.positionX >= 0) {
+          console.log('this is step three')
+          cells[frog.positionY][frog.positionX].classList.remove('frog')
+        }
+        console.log('this is step four')
+        frog.positionX = (frog.positionX + 1) % width
+        cells[frog.positionY][frog.positionX].classList.add('frog')
+        console.log('this is step five')
+      }
+    }
 
+  }
 
   class Win {
     constructor(positionY, positionX) {
@@ -144,11 +164,12 @@ function init() {
   // making new objects
 
   const winOne = new Win(0, 5)
-  const truck = new Enemy(8, -1, 300, 'truck')
-  const car = new Enemy(6, -1, 500, 'car')
-  const lorry = new Enemy(4, -1, 450, 'truck')
-  const log = new Enemy(2, -1, 200, 'car')
-  const logTwo = new Enemy(1, -1, 230, 'car')
+  const truck = new Entity(8, -1, 300, 'truck')
+  const car = new Entity(6, -1, 500, 'car')
+  const log = new WaterPlatform(2, -1, 600, 'log')
+  const logTwo = new WaterPlatform(1, -1, 500, 'log')
+  const logThree = new WaterPlatform(3, -1, 300, 'log')
+  const logFour = new WaterPlatform(4, -1, 999, 'log')
 
   // calling the game loop
 
@@ -158,11 +179,16 @@ function init() {
     //truck.collision()
     car.move()
     //car.collision()
-    lorry.move()
+
+    logFour.frogMove()
     //lorry.collision()
-    log.move()
+
+    log.frogMove()
     //log.collision()
-    logTwo.move()
+
+    logTwo.frogMove()
+
+    logThree.frogMove()
     // logTwo.collision()
     frog.numberOfLives()
     winOne.youWin()
