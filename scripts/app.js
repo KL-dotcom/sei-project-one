@@ -23,22 +23,34 @@ function init() {
 
   // make the water
   const water = {
-
-    makeBoard() {
+    cellsWater: [],
+    placeWater() {
       for (let y = 1; y <= 4; y++) {
         for (let x = 0; x < width; x++) {
-          cells[y][x].classList.add('water')
+          const waterDiv = cells[y][x]
+          waterDiv.classList.add('water')
+          this.cellsWater.push(waterDiv)
         }
       }
     },
     collision() {
-      if (div.classList.contains('frog') && div.classList.contains('water')) {
-        console.log('boom')
-      }
+      this.cellsWater.forEach(waterDiv => {
+        if (waterDiv.classList.contains('water') && waterDiv.classList.contains('frog')) {
+          console.log('boom')
+          cells[frog.positionY][frog.positionX].classList.remove('frog')
+          frog.positionY = 9
+          frog.positionX = 4
+          console.log('new position')
+          frog.lives = frog.lives - 1
+          console.log('new lives count')
+        }
+
+      })
     }
   }
 
-  water.makeBoard()
+
+  water.placeWater()
 
 
   // making the frog
@@ -107,6 +119,7 @@ function init() {
     collision() {
       if (this.positionY === frog.positionY && this.positionX === frog.positionX) {
         console.log('you lose')
+        cells[frog.positionY][frog.positionX].classList.remove('frog')
         frog.positionY = 9
         frog.positionX = 4
         frog.lives = frog.lives - 1
@@ -155,6 +168,7 @@ function init() {
     // logTwo.collision()
     frog.numberOfLives()
     winOne.youWin()
+    water.collision()
   }, 100)
 
 
