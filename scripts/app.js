@@ -22,15 +22,24 @@ function init() {
   createCells(0)
 
   // make the water
+  const water = {
 
-  function water() {
-    for (let y = 1; y <= 4; y++) {
-      for (let x = 0; x < width - 1; x++) {
-        cells[y][x].classList.add('water')
+    makeBoard() {
+      for (let y = 1; y <= 4; y++) {
+        for (let x = 0; x < width; x++) {
+          cells[y][x].classList.add('water')
+        }
+      }
+    },
+    collision() {
+      if (div.classList.contains('frog') && div.classList.contains('water')) {
+        console.log('boom')
       }
     }
   }
-  water()
+
+  water.makeBoard()
+
 
   // making the frog
 
@@ -103,6 +112,7 @@ function init() {
         frog.lives = frog.lives - 1
       }
     }
+  }
 
 
 
@@ -134,18 +144,18 @@ function init() {
   const gameTimer = setInterval(() => {
     frog.move()
     truck.move()
-    truck.collision()
+    //truck.collision()
     car.move()
-    car.collision()
+    //car.collision()
     lorry.move()
-    lorry.collision()
+    //lorry.collision()
     log.move()
-    log.collision()
+    //log.collision()
     logTwo.move()
-    logTwo.collision()
+    // logTwo.collision()
     frog.numberOfLives()
     winOne.youWin()
-  }, 10)
+  }, 100)
 
 
 
@@ -154,7 +164,7 @@ function init() {
   // event listeners
 
 
-  document.addEventListener('keyup', frog.handlePlayerInput)
+  document.addEventListener('keydown', frog.handlePlayerInput)
 
 }
 
