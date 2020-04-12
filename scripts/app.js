@@ -35,7 +35,7 @@ function init() {
     },
     collision() {
       this.cellsWater.forEach(waterDiv => {
-        if (waterDiv.classList.contains('water') && waterDiv.classList.contains('frog')) {
+        if (waterDiv.classList.contains('water') && waterDiv.classList.contains('frog') && waterDiv.classList.length === 2) {
           console.log('boom')
           cells[frog.positionY][frog.positionX].classList.remove('frog')
           frog.positionY = 9
@@ -128,8 +128,6 @@ function init() {
   }
 
 
-
-
   class Win {
     constructor(positionY, positionX) {
       this.positionX = positionX
@@ -168,7 +166,7 @@ function init() {
     // logTwo.collision()
     frog.numberOfLives()
     winOne.youWin()
-    water.collision()
+    //water.collision()
   }, 100)
 
 
