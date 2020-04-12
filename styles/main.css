@@ -54,11 +54,20 @@ body {
   z-index: 1;
 }
 
-/* .water {
+.water {
   background-color: lightblue;
-} */
+}
 
 .water.log {
   background-color: brown;
   z-index: 1;
+}
+
+.frog.log.water {
+  background-color: green;
+  border: 3px solid brown;
+}
+
+.win {
+  background-color: yellow;
 }

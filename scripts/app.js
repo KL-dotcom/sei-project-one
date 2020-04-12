@@ -126,26 +126,27 @@ function init() {
       }
     }
   }
+
   class WaterPlatform extends Entity {
     constructor(positionY, positionX, speed, temp) {
       super(positionY, positionX, speed, temp)
     }
     frogMove() {
-      this.move()
-      console.log('this is step one')
       if (this.positionY === frog.positionY && this.positionX === frog.positionX) {
-        console.log('this is step two')
-        if (frog.positionX >= 0) {
-          console.log('this is step three')
-          cells[frog.positionY][frog.positionX].classList.remove('frog')
+
+        if (Date.now() - this.lastMovedAt > (this.speed)) {
+          if (frog.positionX >= 0) {
+            cells[frog.positionY][frog.positionX].classList.remove('frog', this.temp)
+          }
+          frog.positionX = (frog.positionX + 1) % width
+          cells[frog.positionY][frog.positionX].classList.add('frog', this.temp)
+          this.lastMovedAt = Date.now()
+
         }
-        console.log('this is step four')
-        frog.positionX = (frog.positionX + 1) % width
-        cells[frog.positionY][frog.positionX].classList.add('frog')
-        console.log('this is step five')
+      } else {
+        this.move()
       }
     }
-
   }
 
   class Win {
@@ -156,6 +157,7 @@ function init() {
     youWin() {
       if (this.positionY === frog.positionY && this.positionX === frog.positionX) {
         console.log('You win')
+        cells[frog.positionY][frog.positionX].classList.add('win')
         clearInterval(gameTimer)
       }
     }
@@ -165,34 +167,66 @@ function init() {
 
   const winOne = new Win(0, 5)
   const truck = new Entity(8, -1, 300, 'truck')
+  const truck2 = new Entity(8, 1, 300, 'truck')
+  const truck3 = new Entity(8, 4, 300, 'truck')
   const car = new Entity(6, -1, 500, 'car')
+  const car2 = new Entity(6, 2, 500, 'car')
+  const car3 = new Entity(6, 4, 500, 'car')
+  const car4 = new Entity(6, 8, 500, 'car')
   const log = new WaterPlatform(2, -1, 600, 'log')
-  const logTwo = new WaterPlatform(1, -1, 500, 'log')
-  const logThree = new WaterPlatform(3, -1, 300, 'log')
-  const logFour = new WaterPlatform(4, -1, 999, 'log')
+  const log2 = new WaterPlatform(2, 2, 600, 'log')
+  const log3 = new WaterPlatform(2, 4, 600, 'log')
+  const log4 = new WaterPlatform(2, 6, 600, 'log')
+  const log5 = new WaterPlatform(2, 8, 600, 'log')
+  const turtle = new WaterPlatform(1, -1, 600, 'log')
+  const turtle2 = new WaterPlatform(1, 3, 600, 'log')
+  const turtle3 = new WaterPlatform(1, 5, 600, 'log')
+  const bigLog = new WaterPlatform(3, 8, 600, 'log')
+  const bigLog2 = new WaterPlatform(3, 1, 600, 'log')
+  const bigLog3 = new WaterPlatform(3, 3, 600, 'log')
+  const bigLog4 = new WaterPlatform(3, -1, 600, 'log')
+  const bigLog5 = new WaterPlatform(3, 6, 600, 'log')
+  const meanTurtle = new WaterPlatform(4, -1, 999, 'log')
+  const meanTurtle2 = new WaterPlatform(4, 3, 999, 'log')
+  const meanTurtle3 = new WaterPlatform(4, 6, 999, 'log')
 
   // calling the game loop
 
   const gameTimer = setInterval(() => {
     frog.move()
     truck.move()
-    //truck.collision()
+    truck2.collision()
+    truck2.move()
+    truck2.collision()
+    truck3.move()
+    truck3.collision()
     car.move()
-    //car.collision()
-
-    logFour.frogMove()
-    //lorry.collision()
-
+    car.collision()
+    car2.move()
+    car2.collision()
+    car3.move()
+    car3.collision()
+    car4.move()
+    car4.collision()
     log.frogMove()
-    //log.collision()
-
-    logTwo.frogMove()
-
-    logThree.frogMove()
-    // logTwo.collision()
+    log2.frogMove()
+    log3.frogMove()
+    log4.frogMove()
+    log5.frogMove()
+    turtle.frogMove()
+    turtle2.frogMove()
+    turtle3.frogMove()
+    bigLog.frogMove()
+    bigLog2.frogMove()
+    bigLog3.frogMove()
+    bigLog4.frogMove()
+    bigLog5.frogMove()
+    meanTurtle.frogMove()
+    meanTurtle2.frogMove()
+    meanTurtle3.frogMove()
     frog.numberOfLives()
     winOne.youWin()
-    //water.collision()
+    water.collision()
   }, 100)
 
 
@@ -203,6 +237,7 @@ function init() {
 
 
   document.addEventListener('keydown', frog.handlePlayerInput)
+
 
 }
 
