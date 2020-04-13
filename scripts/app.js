@@ -222,23 +222,22 @@ function init() {
   const car2 = new Entity(6, 2, 500, 'car')
   const car3 = new Entity(6, 4, 500, 'car')
   const car4 = new Entity(6, 8, 500, 'car')
-  const log = new WaterPlatform(2, -1, 600, 'log')
-  const log2 = new WaterPlatform(2, 2, 600, 'log')
-  const log3 = new WaterPlatform(2, 4, 600, 'log')
-  const log4 = new WaterPlatform(2, 6, 600, 'log')
-  const log5 = new WaterPlatform(2, 8, 600, 'log')
+  const log = new WaterPlatform(2, 0, 600, 'log')
+  const log2 = new WaterPlatform(2, 1, 600, 'log')
+  const log3 = new WaterPlatform(2, 2, 600, 'log')
+  const log4 = new WaterPlatform(2, 5, 600, 'log')
+  const log5 = new WaterPlatform(2, 6, 600, 'log')
   const turtle = new WaterPlatform(1, -1, 600, 'log')
   const turtle2 = new WaterPlatform(1, 3, 600, 'log')
   const turtle3 = new WaterPlatform(1, 5, 600, 'log')
-  const bigLog = new WaterPlatform(3, 8, 600, 'log')
-  const bigLog2 = new WaterPlatform(3, 1, 600, 'log')
+  const bigLog = new WaterPlatform(3, 1, 600, 'log')
+  const bigLog2 = new WaterPlatform(3, 2, 600, 'log')
   const bigLog3 = new WaterPlatform(3, 3, 600, 'log')
-  const bigLog4 = new WaterPlatform(3, -1, 600, 'log')
-  const bigLog5 = new WaterPlatform(3, 6, 600, 'log')
+  const bigLog4 = new WaterPlatform(3, 4, 600, 'log')
+  const bigLog5 = new WaterPlatform(3, 5, 600, 'log')
   const meanTurtle = new WaterPlatform(4, -1, 999, 'log')
   const meanTurtle2 = new WaterPlatform(4, 3, 999, 'log')
   const meanTurtle3 = new WaterPlatform(4, 6, 999, 'log')
-
 
 
   const gameTimer = setInterval(() => {
@@ -286,10 +285,15 @@ function init() {
 
 
 
+
   // event listeners
 
 
   document.addEventListener('keydown', frog.handlePlayerInput)
+
+
+  //messing with the screen
+
 
 
 }

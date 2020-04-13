@@ -5,14 +5,17 @@
 body {
   height: 100vh;
   margin: 0;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
 }
 
-.controls-wrapper {
+/* .controls-wrapper {
   height: 10vh;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-}
+} */
 
 .grid-wrapper {
   height: 90vh;
@@ -29,6 +32,7 @@ body {
   justify-content: center;
   height: 600px;
   width: 600px;
+  z-index: 0;
 }
 
 .grid div {
@@ -36,22 +40,18 @@ body {
   flex-grow: 1;
   height: 10%;
   width: 10%;
-  z-index: -1;
 }
 
 .frog {
   background-color: green;
-  z-index: 2;
 }
 
 .truck {
   background-color: blue;
-  z-index: 1;
 }
 
 .car {
   background-color: teal;
-  z-index: 1;
 }
 
 .water {
@@ -60,7 +60,6 @@ body {
 
 .water.log {
   background-color: brown;
-  z-index: 1;
 }
 
 .frog.log.water {
@@ -70,4 +69,26 @@ body {
 
 .win {
   background-color: yellow;
+}
+
+.screen {
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  justify-content: center;
+  height: 600px;
+  width: 600px;
+  background-color: black;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+p {
+  font-size: 20px;
 }
