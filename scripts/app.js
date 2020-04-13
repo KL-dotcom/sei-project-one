@@ -18,8 +18,9 @@ function init() {
     }
 
   }
-
   createCells(0)
+
+
 
   // make the water
   const water = {
@@ -43,6 +44,7 @@ function init() {
           console.log('new position')
           frog.lives = frog.lives - 1
           console.log('new lives count')
+          update()
         }
 
       })
@@ -70,27 +72,27 @@ function init() {
       switch (lastKeyPressed) {
         case 39:
           if (this.positionX < width - 1) this.positionX++
-          console.log('move right')
+          //console.log('move right')
           break
         case 37:
           if (this.positionX > 0) this.positionX--
-          console.log('move left')
+          //console.log('move left')
           break
         case 38:
           if (this.positionY > 0) this.positionY--
-          console.log('move up')
+          //console.log('move up')
           break
         case 40:
           if (this.positionY < width - 1) this.positionY++
-          console.log('move down')
+          //console.log('move down')
           break
         default:
-          console.log('no player input')
+        //console.log('no player input')
       }
       cells[frog.positionY][frog.positionX].classList.add('frog')
     },
     numberOfLives() {
-      console.log(this.lives)
+
       if (this.lives === 0) {
         clearInterval(gameTimer)
       }
@@ -123,6 +125,7 @@ function init() {
         frog.positionY = 9
         frog.positionX = 4
         frog.lives = frog.lives - 1
+        update()
       }
     }
   }
@@ -165,6 +168,7 @@ function init() {
           frog.positionY = 9
           frog.positionX = 4
           frog.lives = frog.lives - 1
+          update()
         } else {
           cells[frog.positionY][frog.positionX].classList.add('win')
           winArray.push('win' + this.positionX)
@@ -188,13 +192,23 @@ function init() {
   // elements
   const score = document.querySelector('#score')
   const lives = document.querySelector('#lives')
-  console.log(lives)
+  const button = document.querySelector('button')
+  console.log(button)
 
   function update() {
     // adding info to the elements
     score.innerHTML = winArray.length
     lives.innerHTML = frog.lives
   }
+
+
+
+
+
+
+  // execution
+
+
 
 
   // making new objects
@@ -231,9 +245,9 @@ function init() {
 
     frog.move()
     truck.move()
-    truck.collision()
+    //truck.collision()
     truck2.move()
-    //truck2.collision()
+    truck2.collision()
     truck3.move()
     //truck3.collision()
     car.move()
@@ -265,7 +279,7 @@ function init() {
     winTwo.youWin()
     winOne.finalWin()
     winTwo.finalWin()
-    //water.collision()
+    water.collision()
   }, 100)
 
 
