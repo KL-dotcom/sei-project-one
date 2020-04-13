@@ -149,23 +149,44 @@ function init() {
     }
   }
 
+  // also a level two maybe to final win
+
+  const winArray = []
+
   class Win {
     constructor(positionY, positionX) {
       this.positionX = positionX
       this.positionY = positionY
     }
+    winArray = []
     youWin() {
       if (this.positionY === frog.positionY && this.positionX === frog.positionX) {
-        console.log('You win')
-        cells[frog.positionY][frog.positionX].classList.add('win')
+        if (cells[this.positionY][this.positionX].classList.contains('win')) {
+          frog.positionY = 9
+          frog.positionX = 4
+          frog.lives = frog.lives - 1
+        } else {
+          cells[frog.positionY][frog.positionX].classList.add('win')
+          winArray.push('win' + this.positionX)
+          console.log(winArray, winArray.length)
+          frog.positionY = 9
+          frog.positionX = 4
+          // clearInterval(gameTimer)
+        }
+      }
+    }
+    finalWin() {
+      if (winArray.length === 2) {
         clearInterval(gameTimer)
       }
     }
   }
 
+
   // making new objects
 
   const winOne = new Win(0, 5)
+  const winTwo = new Win(0, 3)
   const truck = new Entity(8, -1, 300, 'truck')
   const truck2 = new Entity(8, 1, 300, 'truck')
   const truck3 = new Entity(8, 4, 300, 'truck')
@@ -195,19 +216,19 @@ function init() {
   const gameTimer = setInterval(() => {
     frog.move()
     truck.move()
-    truck2.collision()
+    truck.collision()
     truck2.move()
-    truck2.collision()
+    //truck2.collision()
     truck3.move()
-    truck3.collision()
+    //truck3.collision()
     car.move()
-    car.collision()
+    //car.collision()
     car2.move()
-    car2.collision()
+    //car2.collision()
     car3.move()
-    car3.collision()
+    //car3.collision()
     car4.move()
-    car4.collision()
+    //car4.collision()
     log.frogMove()
     log2.frogMove()
     log3.frogMove()
@@ -226,7 +247,10 @@ function init() {
     meanTurtle3.frogMove()
     frog.numberOfLives()
     winOne.youWin()
-    water.collision()
+    winTwo.youWin()
+    winOne.finalWin()
+    winTwo.finalWin()
+    //water.collision()
   }, 100)
 
 
