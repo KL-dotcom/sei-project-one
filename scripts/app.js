@@ -171,15 +171,29 @@ function init() {
           console.log(winArray, winArray.length)
           frog.positionY = 9
           frog.positionX = 4
-          // clearInterval(gameTimer)
+          update()
         }
       }
     }
     finalWin() {
       if (winArray.length === 2) {
+        update()
         clearInterval(gameTimer)
       }
     }
+  }
+
+  // the side bar with lives and the button
+
+  // elements
+  const score = document.querySelector('#score')
+  const lives = document.querySelector('#lives')
+  console.log(lives)
+
+  function update() {
+    // adding info to the elements
+    score.innerHTML = winArray.length
+    lives.innerHTML = frog.lives
   }
 
 
@@ -211,9 +225,10 @@ function init() {
   const meanTurtle2 = new WaterPlatform(4, 3, 999, 'log')
   const meanTurtle3 = new WaterPlatform(4, 6, 999, 'log')
 
-  // calling the game loop
+
 
   const gameTimer = setInterval(() => {
+
     frog.move()
     truck.move()
     truck.collision()
