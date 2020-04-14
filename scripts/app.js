@@ -278,7 +278,7 @@ function init() {
     winTwo.youWin()
     winOne.finalWin()
     winTwo.finalWin()
-    water.collision()
+    // water.collision()
   }, 100)
 
 
