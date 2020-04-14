@@ -164,6 +164,16 @@ function init() {
       }
 
     }
+    moveBackwards() {
+      const isFrogOnPlatform = this.positionY === frog.positionY && this.positionX === frog.positionX
+      super.moveBackwards()
+      if (isFrogOnPlatform) {
+        cells[frog.positionY][frog.positionX].classList.remove('frog')
+        frog.positionY = this.positionY
+        frog.positionX = this.positionX
+        cells[frog.positionY][frog.positionX].classList.add('frog')
+      }
+    }
     // frogMove() {
     //   if (this.positionY === frog.positionY && this.positionX === frog.positionX) {
 
@@ -248,7 +258,7 @@ function init() {
   const truck = new Entity(8, 9, 300, 'spider')
   const truck2 = new Entity(8, 1, 300, 'spider')
   const truck3 = new Entity(8, 4, 300, 'spider')
-  const car = new Entity(6, -1, 500, 'spider')
+  const car = new Entity(6, 0, 500, 'spider')
   const car2 = new Entity(6, 2, 500, 'spider')
   const car3 = new Entity(6, 4, 500, 'spider')
   const car4 = new Entity(6, 8, 500, 'spider')
@@ -257,7 +267,7 @@ function init() {
   const log3 = new WaterPlatform(2, 2, 600, 'log')
   const log4 = new WaterPlatform(2, 1, 600, 'log')
   const log5 = new WaterPlatform(2, 0, 600, 'log')
-  const turtle = new WaterPlatform(1, -1, 600, 'log')
+  const turtle = new WaterPlatform(1, 0, 600, 'log')
   const turtle2 = new WaterPlatform(1, 3, 600, 'log')
   const turtle3 = new WaterPlatform(1, 5, 600, 'log')
   const bigLog = new WaterPlatform(3, 1, 600, 'log')
@@ -265,7 +275,7 @@ function init() {
   const bigLog3 = new WaterPlatform(3, 3, 600, 'log')
   const bigLog4 = new WaterPlatform(3, 4, 600, 'log')
   const bigLog5 = new WaterPlatform(3, 5, 600, 'log')
-  const meanTurtle = new WaterPlatform(4, -1, 999, 'log')
+  const meanTurtle = new WaterPlatform(4, 1, 999, 'log')
   const meanTurtle2 = new WaterPlatform(4, 3, 999, 'log')
   const meanTurtle3 = new WaterPlatform(4, 6, 999, 'log')
 
@@ -273,11 +283,11 @@ function init() {
   const gameTimer = setInterval(() => {
 
     frog.move()
-    truck.moveBackwards()
+    truck.move()
     //truck.collision()
-    // truck2.move()
+    truck2.move()
     // truck2.collision()
-    // truck3.move()
+    truck3.move()
     //truck3.collision()
     car.move()
     //car.collision()
@@ -292,14 +302,14 @@ function init() {
     log3.move()
     log4.move()
     log5.move()
-    turtle.move()
-    turtle2.move()
-    turtle3.move()
-    bigLog.move()
-    bigLog2.move()
-    bigLog3.move()
-    bigLog4.move()
-    bigLog5.move()
+    turtle.moveBackwards()
+    turtle2.moveBackwards()
+    turtle3.moveBackwards()
+    bigLog.moveBackwards()
+    bigLog2.moveBackwards()
+    bigLog3.moveBackwards()
+    bigLog4.moveBackwards()
+    bigLog5.moveBackwards()
     meanTurtle.move()
     meanTurtle2.move()
     meanTurtle3.move()
