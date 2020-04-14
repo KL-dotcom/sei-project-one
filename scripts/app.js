@@ -12,7 +12,7 @@ function init() {
       for (let x = 0; x < width; x++) {
         const cell = document.createElement('div')
         grid.appendChild(cell)
-        // cell.textContent = 'y:' + y + ', x:' + x
+        cell.textContent = 'y:' + y + ', x:' + x
         cells[y][x] = cell
       }
     }
@@ -117,6 +117,24 @@ function init() {
         this.positionX = (this.positionX + 1) % width
         cells[this.positionY][this.positionX].classList.add(this.name)
         this.lastMovedAt = Date.now()
+      }
+    }
+    moveBackwards() {
+      if (Date.now() - this.lastMovedAt > this.speed) {
+        if (this.positionX <= 0) {
+          cells[this.positionY][this.positionX].classList.remove(this.name)
+          this.positionX = width - 1
+          cells[this.positionY][this.positionX].classList.add(this.name)
+          this.lastMovedAt = Date.now()
+
+          return
+        }
+        cells[this.positionY][this.positionX].classList.remove(this.name)
+        this.positionX = this.positionX - 1
+        cells[this.positionY][this.positionX].classList.add(this.name)
+        this.lastMovedAt = Date.now()
+
+
       }
     }
     collision() {
@@ -227,7 +245,7 @@ function init() {
 
   const winOne = new Win(0, 5)
   const winTwo = new Win(0, 3)
-  const truck = new Entity(8, -1, 300, 'spider')
+  const truck = new Entity(8, 9, 300, 'spider')
   const truck2 = new Entity(8, 1, 300, 'spider')
   const truck3 = new Entity(8, 4, 300, 'spider')
   const car = new Entity(6, -1, 500, 'spider')
@@ -255,11 +273,11 @@ function init() {
   const gameTimer = setInterval(() => {
 
     frog.move()
-    truck.move()
+    truck.moveBackwards()
     //truck.collision()
-    truck2.move()
-    truck2.collision()
-    truck3.move()
+    // truck2.move()
+    // truck2.collision()
+    // truck3.move()
     //truck3.collision()
     car.move()
     //car.collision()
@@ -290,7 +308,7 @@ function init() {
     winTwo.youWin()
     winOne.finalWin()
     winTwo.finalWin()
-    //water.collision()
+    water.collision()
   }, 100)
 
 
