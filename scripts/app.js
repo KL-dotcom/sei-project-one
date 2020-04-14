@@ -134,21 +134,32 @@ function init() {
     constructor(positionY, positionX, speed, temp) {
       super(positionY, positionX, speed, temp)
     }
-    frogMove() {
-      if (this.positionY === frog.positionY && this.positionX === frog.positionX) {
-
-        if (Date.now() - this.lastMovedAt > (this.speed)) {
-          cells[frog.positionY][frog.positionX].classList.remove('frog', this.className)
-          const newX = (frog.positionX + 1) % width
-          frog.positionX = newX
-          cells[frog.positionY][frog.positionX].classList.add('frog', this.className)
-          this.lastMovedAt = Date.now()
-
-        }
-      } else {
-        this.move()
+    move() {
+      const isFrogOnPlatform = this.positionY === frog.positionY && this.positionX === frog.positionX
+      super.move()
+      if (isFrogOnPlatform) {
+        cells[frog.positionY][frog.positionX].classList.remove('frog')
+        frog.positionY = this.positionY
+        frog.positionX = this.positionX
+        cells[frog.positionY][frog.positionX].classList.add('frog')
       }
+
     }
+    // frogMove() {
+    //   if (this.positionY === frog.positionY && this.positionX === frog.positionX) {
+
+    //     if (Date.now() - this.lastMovedAt > (this.speed)) {
+    //       cells[frog.positionY][frog.positionX].classList.remove('frog', this.className)
+    //       const newX = (frog.positionX + 1) % width
+    //       frog.positionX = newX
+    //       cells[frog.positionY][frog.positionX].classList.add('frog', this.className)
+    //       this.lastMovedAt = Date.now()
+
+    //     }
+    //   } else {
+    //     this.move()
+    //   }
+    // }
   }
 
   // also a level two maybe to final win
@@ -169,6 +180,7 @@ function init() {
           frog.lives = frog.lives - 1
           update()
         } else {
+          cells[frog.positionY][frog.positionX].classList.remove('frog')
           cells[frog.positionY][frog.positionX].classList.add('win')
           winArray.push('win' + this.positionX)
           console.log(winArray, winArray.length)
@@ -256,28 +268,28 @@ function init() {
     //car3.collision()
     car4.move()
     //car4.collision()
-    log.frogMove()
-    log2.frogMove()
-    log3.frogMove()
-    log4.frogMove()
-    log5.frogMove()
-    turtle.frogMove()
-    turtle2.frogMove()
-    turtle3.frogMove()
-    bigLog.frogMove()
-    bigLog2.frogMove()
-    bigLog3.frogMove()
-    bigLog4.frogMove()
-    bigLog5.frogMove()
-    meanTurtle.frogMove()
-    meanTurtle2.frogMove()
-    meanTurtle3.frogMove()
+    log.move()
+    log2.move()
+    log3.move()
+    log4.move()
+    log5.move()
+    turtle.move()
+    turtle2.move()
+    turtle3.move()
+    bigLog.move()
+    bigLog2.move()
+    bigLog3.move()
+    bigLog4.move()
+    bigLog5.move()
+    meanTurtle.move()
+    meanTurtle2.move()
+    meanTurtle3.move()
     frog.numberOfLives()
     winOne.youWin()
     winTwo.youWin()
     winOne.finalWin()
     winTwo.finalWin()
-    // water.collision()
+    water.collision()
   }, 100)
 
 
