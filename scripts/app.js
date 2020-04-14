@@ -105,16 +105,16 @@ function init() {
       this.positionY = positionY
       this.positionX = positionX
       this.speed = speed
-      this.temp = temp
+      this.className = temp
     }
     lastMovedAt = Date.now()
     move() {
       if (Date.now() - this.lastMovedAt > this.speed) {
         if (this.positionX >= 0) {
-          cells[this.positionY][this.positionX].classList.remove(this.temp)
+          cells[this.positionY][this.positionX].classList.remove(this.className)
         }
         this.positionX = (this.positionX + 1) % width
-        cells[this.positionY][this.positionX].classList.add(this.temp)
+        cells[this.positionY][this.positionX].classList.add(this.className)
         this.lastMovedAt = Date.now()
       }
     }
@@ -138,11 +138,10 @@ function init() {
       if (this.positionY === frog.positionY && this.positionX === frog.positionX) {
 
         if (Date.now() - this.lastMovedAt > (this.speed)) {
-          if (frog.positionX >= 0) {
-            cells[frog.positionY][frog.positionX].classList.remove('frog', this.temp)
-          }
-          frog.positionX = (frog.positionX + 1) % width
-          cells[frog.positionY][frog.positionX].classList.add('frog', this.temp)
+          cells[frog.positionY][frog.positionX].classList.remove('frog', this.className)
+          const newX = (frog.positionX + 1) % width
+          frog.positionX = newX
+          cells[frog.positionY][frog.positionX].classList.add('frog', this.className)
           this.lastMovedAt = Date.now()
 
         }
@@ -215,18 +214,18 @@ function init() {
 
   const winOne = new Win(0, 5)
   const winTwo = new Win(0, 3)
-  const truck = new Entity(8, -1, 300, 'truck')
-  const truck2 = new Entity(8, 1, 300, 'truck')
-  const truck3 = new Entity(8, 4, 300, 'truck')
-  const car = new Entity(6, -1, 500, 'car')
-  const car2 = new Entity(6, 2, 500, 'car')
-  const car3 = new Entity(6, 4, 500, 'car')
-  const car4 = new Entity(6, 8, 500, 'car')
-  const log = new WaterPlatform(2, 0, 600, 'log')
-  const log2 = new WaterPlatform(2, 1, 600, 'log')
+  const truck = new Entity(8, -1, 300, 'spider')
+  const truck2 = new Entity(8, 1, 300, 'spider')
+  const truck3 = new Entity(8, 4, 300, 'spider')
+  const car = new Entity(6, -1, 500, 'spider')
+  const car2 = new Entity(6, 2, 500, 'spider')
+  const car3 = new Entity(6, 4, 500, 'spider')
+  const car4 = new Entity(6, 8, 500, 'spider')
+  const log = new WaterPlatform(2, 4, 600, 'log')
+  const log2 = new WaterPlatform(2, 3, 600, 'log')
   const log3 = new WaterPlatform(2, 2, 600, 'log')
-  const log4 = new WaterPlatform(2, 5, 600, 'log')
-  const log5 = new WaterPlatform(2, 6, 600, 'log')
+  const log4 = new WaterPlatform(2, 1, 600, 'log')
+  const log5 = new WaterPlatform(2, 0, 600, 'log')
   const turtle = new WaterPlatform(1, -1, 600, 'log')
   const turtle2 = new WaterPlatform(1, 3, 600, 'log')
   const turtle3 = new WaterPlatform(1, 5, 600, 'log')

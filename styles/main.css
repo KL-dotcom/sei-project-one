@@ -10,13 +10,6 @@ body {
   justify-content: space-around;
 }
 
-/* .controls-wrapper {
-  height: 10vh;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-} */
-
 .grid-wrapper {
   height: 90vh;
   display: flex;
@@ -43,11 +36,16 @@ body {
 }
 
 .frog {
-  background-color: green;
+  background-image: url('https://media2.giphy.com/media/3oKIPjbtKHIQd2Yb0Q/giphy.gif?cid=ecf05e47af70c584df9fd4113bca3db80dcf0889369b29e9&rid=giphy.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
-.truck {
-  background-color: blue;
+.spider {
+  background-image: url('https://media2.giphy.com/media/oX90d6Bqef02AmU45H/giphy.gif?cid=ecf05e474cc0b6048d2aa5054bc78e1791a2c46853ff8b6a&rid=giphy.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
+  transform: rotate(90deg);
 }
 
 .car {
@@ -59,12 +57,15 @@ body {
 }
 
 .water.log {
-  background-color: brown;
+  background-image: url('https://media.giphy.com/media/LoJ0rtc4HIIXjstwCr/giphy.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .frog.log.water {
-  background-color: green;
-  border: 3px solid brown;
+  background-image: url('https://media2.giphy.com/media/3oKIPjbtKHIQd2Yb0Q/giphy.gif?cid=ecf05e47af70c584df9fd4113bca3db80dcf0889369b29e9&rid=giphy.gif'), url('https://media.giphy.com/media/LoJ0rtc4HIIXjstwCr/giphy.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .win {
