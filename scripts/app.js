@@ -222,6 +222,8 @@ function init() {
     finalWin() {
       if (winArray.length === 2) {
         update()
+        button.style.visibility = 'visible'
+        button.innerHTML = 'restart game'
         clearInterval(gameTimer)
       }
     }
@@ -233,7 +235,6 @@ function init() {
   const score = document.querySelector('#score')
   const lives = document.querySelector('#lives')
   const button = document.querySelector('button')
-  console.log(button)
 
   function update() {
     // adding info to the elements
@@ -242,14 +243,16 @@ function init() {
   }
 
 
-
-
+  function hideBtn() {
+    button.style.visibility = 'hidden'
+    console.log('none')
+  }
 
 
   // execution
 
-
-
+  button.addEventListener('click', playGame)
+  button.addEventListener('click', hideBtn)
 
   // making new objects
 
@@ -280,47 +283,52 @@ function init() {
   const meanTurtle3 = new WaterPlatform(4, 6, 999, 'log')
 
 
-  const gameTimer = setInterval(() => {
+  let gameTimer
 
-    frog.move()
-    truck.move()
-    //truck.collision()
-    truck2.move()
-    // truck2.collision()
-    truck3.move()
-    //truck3.collision()
-    car.move()
-    //car.collision()
-    car2.move()
-    //car2.collision()
-    car3.move()
-    //car3.collision()
-    car4.move()
-    //car4.collision()
-    log.move()
-    log2.move()
-    log3.move()
-    log4.move()
-    log5.move()
-    turtle.moveBackwards()
-    turtle2.moveBackwards()
-    turtle3.moveBackwards()
-    bigLog.moveBackwards()
-    bigLog2.moveBackwards()
-    bigLog3.moveBackwards()
-    bigLog4.moveBackwards()
-    bigLog5.moveBackwards()
-    meanTurtle.move()
-    meanTurtle2.move()
-    meanTurtle3.move()
-    frog.numberOfLives()
-    winOne.youWin()
-    winTwo.youWin()
-    winOne.finalWin()
-    winTwo.finalWin()
-    water.collision()
-  }, 100)
+  function playGame() {
 
+    gameTimer = setInterval(() => {
+
+      frog.move()
+      truck.move()
+      //truck.collision()
+      truck2.move()
+      // truck2.collision()
+      truck3.move()
+      //truck3.collision()
+      car.move()
+      //car.collision()
+      car2.move()
+      //car2.collision()
+      car3.move()
+      //car3.collision()
+      car4.move()
+      //car4.collision()
+      log.move()
+      log2.move()
+      log3.move()
+      log4.move()
+      log5.move()
+      turtle.moveBackwards()
+      turtle2.moveBackwards()
+      turtle3.moveBackwards()
+      bigLog.moveBackwards()
+      bigLog2.moveBackwards()
+      bigLog3.moveBackwards()
+      bigLog4.moveBackwards()
+      bigLog5.moveBackwards()
+      meanTurtle.move()
+      meanTurtle2.move()
+      meanTurtle3.move()
+      frog.numberOfLives()
+      winOne.youWin()
+      winTwo.youWin()
+      winOne.finalWin()
+      winTwo.finalWin()
+      //water.collision()
+    }, 100)
+
+  }
 
 
 
@@ -333,6 +341,11 @@ function init() {
 
 
   //messing with the screen
+
+
+  // making the button
+
+
 
 
 
