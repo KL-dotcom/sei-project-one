@@ -8,6 +8,8 @@ body {
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-around;
+  background-color: darkgray;
+  color: white;
 }
 
 .grid-wrapper {
@@ -18,18 +20,19 @@ body {
 
 .grid {
   align-items: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2); */
   display: flex;
   flex-wrap: wrap;
   height: 100%;
   justify-content: center;
-  height: 600px;
-  width: 600px;
-  z-index: 0;
+  height: 700px;
+  width: 800px;
+  margin-top: 50px;
+  background-color: black;
 }
 
 .grid div {
-  border: 1px solid lightgrey;
+  /* border: 1px solid lightgrey; */
   flex-grow: 1;
   height: 10%;
   width: 10%;
@@ -42,10 +45,10 @@ body {
 }
 
 .spider {
-  background-image: url('https://media2.giphy.com/media/oX90d6Bqef02AmU45H/giphy.gif?cid=ecf05e474cc0b6048d2aa5054bc78e1791a2c46853ff8b6a&rid=giphy.gif');
+  background-image: url('https://media.giphy.com/media/lSiRfU6n5g424/giphy.gif');
   background-repeat: no-repeat;
   background-size: contain;
-  transform: rotate(90deg);
+  /* transform: rotate(90deg); */
 }
 
 .car {

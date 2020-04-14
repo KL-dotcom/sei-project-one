@@ -12,7 +12,7 @@ function init() {
       for (let x = 0; x < width; x++) {
         const cell = document.createElement('div')
         grid.appendChild(cell)
-        cell.textContent = 'y:' + y + ', x:' + x
+        // cell.textContent = 'y:' + y + ', x:' + x
         cells[y][x] = cell
       }
     }
@@ -101,20 +101,21 @@ function init() {
 
   //making classes
   class Entity {
-    constructor(positionY, positionX, speed, temp) {
+    constructor(positionY, positionX, speed, name) {
       this.positionY = positionY
       this.positionX = positionX
       this.speed = speed
-      this.className = temp
+      this.name = name
     }
     lastMovedAt = Date.now()
     move() {
       if (Date.now() - this.lastMovedAt > this.speed) {
         if (this.positionX >= 0) {
-          cells[this.positionY][this.positionX].classList.remove(this.className)
+          cells[this.positionY][this.positionX].classList.remove(this.name)
         }
+
         this.positionX = (this.positionX + 1) % width
-        cells[this.positionY][this.positionX].classList.add(this.className)
+        cells[this.positionY][this.positionX].classList.add(this.name)
         this.lastMovedAt = Date.now()
       }
     }
@@ -131,8 +132,8 @@ function init() {
   }
 
   class WaterPlatform extends Entity {
-    constructor(positionY, positionX, speed, temp) {
-      super(positionY, positionX, speed, temp)
+    constructor(positionY, positionX, speed, name) {
+      super(positionY, positionX, speed, name)
     }
     move() {
       const isFrogOnPlatform = this.positionY === frog.positionY && this.positionX === frog.positionX
@@ -289,7 +290,7 @@ function init() {
     winTwo.youWin()
     winOne.finalWin()
     winTwo.finalWin()
-    water.collision()
+    //water.collision()
   }, 100)
 
 
