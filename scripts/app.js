@@ -232,10 +232,19 @@ function init() {
         }
       }
     }
+    resetWin() {
+      cells[this.positionY][this.positionX].classList.remove('won')
+    }
     finalWin() {
       if (winArray.length === 2) {
         update()
         clearInterval(gameTimer)
+        console.log('first level done')
+        playGame2()
+        console.log('next level on')
+      } else if (winArray.length === 4) {
+        update()
+        clearInterval(gameTimer2)
       }
     }
   }
@@ -308,7 +317,7 @@ function init() {
       truck.moveBackwards()
       //truck.collision()
       truck2.moveBackwards()
-      truck2.collision()
+      //truck2.collision()
       truck3.moveBackwards()
       truck3.collision()
       car.moveBackwards()
@@ -342,7 +351,58 @@ function init() {
       winTwo.youWon()
       winOne.finalWin()
       winTwo.finalWin()
-      water.collision()
+      //water.collision()
+    }, 100)
+
+  }
+
+  let gameTimer2
+
+  function playGame2() {
+    makeGoth()
+    winOne.resetWin()
+    winTwo.resetWin()
+
+    gameTimer2 = setInterval(() => {
+      frog.move()
+      truck.moveBackwards()
+      //truck.collision()
+      truck2.moveBackwards()
+      //truck2.collision()
+      truck3.moveBackwards()
+      //truck3.collision()
+      car.moveBackwards()
+      //car.collision()
+      car2.moveBackwards()
+      //car2.collision()
+      car3.moveBackwards()
+      //car3.collision()
+      car4.moveBackwards()
+      //car4.collision()
+      fastCat.move()
+      //fastCat.collision()
+      log.move()
+      log2.move()
+      log3.move()
+      log4.move()
+      log5.move()
+      turtle.moveBackwards()
+      turtle2.moveBackwards()
+      turtle3.moveBackwards()
+      bigLog.moveBackwards()
+      bigLog2.moveBackwards()
+      bigLog3.moveBackwards()
+      bigLog4.moveBackwards()
+      bigLog5.moveBackwards()
+      meanTurtle.move()
+      meanTurtle2.move()
+      meanTurtle3.move()
+      frog.numberOfLives()
+      winOne.youWon()
+      winTwo.youWon()
+      winOne.finalWin()
+      winTwo.finalWin()
+      //water.collision()
     }, 100)
 
   }
@@ -369,14 +429,12 @@ function init() {
   // adding goth to the page
 
   const body = document.querySelector('body')
-  const updatesBoard = document.querySelector('.updatesBoard')
-  const container = document.querySelector('.container')
 
   function makeGoth() {
     body.classList.add('goth')
   }
 
-  makeGoth()
+  //makeGoth()
 
 
 }
