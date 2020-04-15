@@ -14,14 +14,9 @@ body {
 }
 
 body.goth {
-  height: 100vh;
-  margin: 0;
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-around;
   background-color: black;
   color: black;
-  font-family: 'Patrick Hand', cursive;
+  font-family: 'Libre Baskerville', serif;
 }
 
 .grid-wrapper {
@@ -44,16 +39,7 @@ body.goth {
   border-radius: 16px;
 }
 
-.grid.goth {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  height: 100%;
-  justify-content: center;
-  height: 650px;
-  width: 750px;
-  margin: 50px;
-  background-color: green;
+.goth .grid {
   border: 16px solid red;
   border-radius: 0;
 }
@@ -89,7 +75,7 @@ p {
   align-items: center;
 }
 
-.updatesBoard.goth {
+.goth .updatesBoard {
   height: 350px;
   width: 400px;
   border: 16px solid red;
@@ -115,7 +101,7 @@ p {
   background-color: white;
 }
 
-.container.goth {
+.goth .container {
   height: 250px;
   width: 300px;
   border: 16px solid red;
@@ -128,7 +114,15 @@ button {
   background-color: purple;
   border-radius: 4px;
   color: white;
-  height: ;
+  height: 20px;
+  width: 120px;
+}
+
+.goth button {
+  background-color: red;
+  border-radius: 0;
+  color: black;
+  border: 0;
 }
 
 .frog {

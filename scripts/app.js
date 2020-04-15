@@ -366,6 +366,19 @@ function init() {
 
 
 
+  // adding goth to the page
+
+  const body = document.querySelector('body')
+  const updatesBoard = document.querySelector('.updatesBoard')
+  const container = document.querySelector('.container')
+
+  function makeGoth() {
+    body.classList.add('goth')
+  }
+
+  makeGoth()
+
+
 }
 
 window.addEventListener('DOMContentLoaded', init)
