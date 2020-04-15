@@ -12,7 +12,7 @@ function init() {
       for (let x = 0; x < width; x++) {
         const cell = document.createElement('div')
         grid.appendChild(cell)
-        cell.textContent = 'y:' + y + ', x:' + x
+        // cell.textContent = 'y:' + y + ', x:' + x
         cells[y][x] = cell
       }
     }
@@ -222,8 +222,6 @@ function init() {
     finalWin() {
       if (winArray.length === 2) {
         update()
-        button.style.visibility = 'visible'
-        button.innerHTML = 'restart game'
         clearInterval(gameTimer)
       }
     }
@@ -245,7 +243,7 @@ function init() {
 
   function hideBtn() {
     button.style.visibility = 'hidden'
-    console.log('none')
+
   }
 
 
@@ -258,13 +256,14 @@ function init() {
 
   const winOne = new Win(0, 5)
   const winTwo = new Win(0, 3)
-  const truck = new Entity(8, 9, 300, 'spider')
-  const truck2 = new Entity(8, 1, 300, 'spider')
-  const truck3 = new Entity(8, 4, 300, 'spider')
-  const car = new Entity(6, 0, 500, 'spider')
-  const car2 = new Entity(6, 2, 500, 'spider')
-  const car3 = new Entity(6, 4, 500, 'spider')
-  const car4 = new Entity(6, 8, 500, 'spider')
+  const truck = new Entity(8, 9, 600, 'black-cat')
+  const truck2 = new Entity(8, 1, 600, 'black-cat')
+  const truck3 = new Entity(8, 4, 600, 'black-cat')
+  const car = new Entity(6, 0, 600, 'white-cat')
+  const car2 = new Entity(6, 2, 600, 'white-cat')
+  const car3 = new Entity(6, 4, 600, 'white-cat')
+  const car4 = new Entity(6, 8, 600, 'white-cat')
+  const fastCat = new Entity(7, 0, 200, 'running-cat')
   const log = new WaterPlatform(2, 4, 600, 'log')
   const log2 = new WaterPlatform(2, 3, 600, 'log')
   const log3 = new WaterPlatform(2, 2, 600, 'log')
@@ -278,9 +277,9 @@ function init() {
   const bigLog3 = new WaterPlatform(3, 3, 600, 'log')
   const bigLog4 = new WaterPlatform(3, 4, 600, 'log')
   const bigLog5 = new WaterPlatform(3, 5, 600, 'log')
-  const meanTurtle = new WaterPlatform(4, 1, 999, 'log')
-  const meanTurtle2 = new WaterPlatform(4, 3, 999, 'log')
-  const meanTurtle3 = new WaterPlatform(4, 6, 999, 'log')
+  const meanTurtle = new WaterPlatform(4, 1, 999, 'box')
+  const meanTurtle2 = new WaterPlatform(4, 3, 999, 'box')
+  const meanTurtle3 = new WaterPlatform(4, 6, 999, 'box')
 
 
   let gameTimer
@@ -290,20 +289,22 @@ function init() {
     gameTimer = setInterval(() => {
 
       frog.move()
-      truck.move()
-      truck.collision()
-      truck2.move()
-      truck2.collision()
-      truck3.move()
-      truck3.collision()
-      car.move()
-      car.collision()
-      car2.move()
-      car2.collision()
-      car3.move()
-      car3.collision()
-      car4.move()
-      car4.collision()
+      truck.moveBackwards()
+      //truck.collision()
+      truck2.moveBackwards()
+      //truck2.collision()
+      truck3.moveBackwards()
+      // truck3.collision()
+      car.moveBackwards()
+      //car.collision()
+      car2.moveBackwards()
+      //car2.collision()
+      car3.moveBackwards()
+      //car3.collision()
+      car4.moveBackwards()
+      //car4.collision()
+      fastCat.move()
+      //fastCat.collision()
       log.move()
       log2.move()
       log3.move()
@@ -325,7 +326,7 @@ function init() {
       winTwo.youWin()
       winOne.finalWin()
       winTwo.finalWin()
-      water.collision()
+      //water.collision()
     }, 100)
 
   }

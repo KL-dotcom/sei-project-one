@@ -26,7 +26,7 @@ body {
   height: 100%;
   justify-content: center;
   height: 650px;
-  width: 700px;
+  width: 750px;
   margin: 50px;
   background-color: green;
   border: 16px solid purple;
@@ -34,23 +34,34 @@ body {
 }
 
 .grid div {
-  border: 1px solid lightgrey;
+  /* border: 1px solid lightgrey; */
   flex-grow: 1;
   height: 10%;
   width: 10%;
 }
 
 .frog {
-  background-image: url('https://media2.giphy.com/media/3oKIPjbtKHIQd2Yb0Q/giphy.gif?cid=ecf05e47af70c584df9fd4113bca3db80dcf0889369b29e9&rid=giphy.gif');
+  background-image: url('https://media.giphy.com/media/2Yem5C2E1R2LjzJ6v2/giphy.gif');
   background-repeat: no-repeat;
   background-size: contain;
 }
 
-.spider {
-  background-image: url('https://media.giphy.com/media/lSiRfU6n5g424/giphy.gif');
+.black-cat {
+  background-image: url('https://media.giphy.com/media/hTItiQoLZfO69tYY9k/giphy.gif');
   background-repeat: no-repeat;
   background-size: contain;
-  /* transform: rotate(90deg); */
+}
+
+.white-cat {
+  background-image: url('https://media.giphy.com/media/j3cBjQKWlT67ned7lX/giphy.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.running-cat {
+  background-image: url('https://media.giphy.com/media/3ov9jZcYgtiOgUeipq/giphy.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .car {
@@ -62,13 +73,25 @@ body {
 }
 
 .water.log {
-  background-image: url('https://media.giphy.com/media/LoJ0rtc4HIIXjstwCr/giphy.gif');
+  background-image: url('https://media.giphy.com/media/jTlePYX9Pmkucvu1QO/giphy.gif');
   background-repeat: no-repeat;
   background-size: contain;
 }
 
 .frog.log.water {
-  background-image: url('https://media2.giphy.com/media/3oKIPjbtKHIQd2Yb0Q/giphy.gif?cid=ecf05e47af70c584df9fd4113bca3db80dcf0889369b29e9&rid=giphy.gif'), url('https://media.giphy.com/media/LoJ0rtc4HIIXjstwCr/giphy.gif');
+  background-image: url('https://media.giphy.com/media/2Yem5C2E1R2LjzJ6v2/giphy.gif'), url('https://media.giphy.com/media/W08w1Y61ZAPivgSira/giphy.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.water.box {
+  background-image: url('https://media.giphy.com/media/14SBvAKZSz8ikt6tV4/giphy.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.frog.box.water {
+  background-image: url('https://media.giphy.com/media/2Yem5C2E1R2LjzJ6v2/giphy.gif'), url('https://media.giphy.com/media/14SBvAKZSz8ikt6tV4/giphy.gif');
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -108,4 +131,40 @@ h1 {
   border-radius: 16px;
   text-align: center;
   background-color: white;
+}
+
+.tuna {
+  background-image: url('https://media.giphy.com/media/dZoY4P7TV8O8sBbT5x/giphy.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.grass {
+  background-image: url('https://media.giphy.com/media/7OX3QcMAcN4blQBxC5/giphy.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.grass-edge {
+  background-image: url('https://media.giphy.com/media/M3Nu5KLHOHHd6/giphy.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.water-ripples {
+  background-image: url('https://media.giphy.com/media/6qpSkp6II9Vv8MWWnO/giphy.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.fight {
+  background-image: url('https://media.giphy.com/media/duXXNSSftjqHchv4XI/giphy.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.splash {
+  background-image: url('https://media.giphy.com/media/YOk7USZ9k8yF4R0yn3/giphy.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
 }
