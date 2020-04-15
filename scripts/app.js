@@ -61,6 +61,7 @@ function init() {
     positionY: 9,
     positionX: 4,
     lives: 3,
+    level: 1,
     keyPressed: null,
     handlePlayerInput(event) {
       frog.keyPressed = event.keyCode
@@ -236,15 +237,15 @@ function init() {
       cells[this.positionY][this.positionX].classList.remove('won')
     }
     finalWin() {
-      if (winArray.length === 2) {
+      if (winArray.length === 2 && frog.level === 1) {
         update()
         clearInterval(gameTimer)
-        console.log('first level done')
         playGame2()
-        console.log('next level on')
+        frog.level = frog.level + 1
+        console.log(frog.level)
       } else if (winArray.length === 4) {
         update()
-        clearInterval(gameTimer2)
+        clearInterval(gameTimer)
       }
     }
   }
@@ -356,14 +357,13 @@ function init() {
 
   }
 
-  let gameTimer2
 
   function playGame2() {
     makeGoth()
     winOne.resetWin()
     winTwo.resetWin()
 
-    gameTimer2 = setInterval(() => {
+    gameTimer = setInterval(() => {
       frog.move()
       truck.moveBackwards()
       //truck.collision()
@@ -402,7 +402,7 @@ function init() {
       winTwo.youWon()
       winOne.finalWin()
       winTwo.finalWin()
-      //water.collision()
+      water.collision()
     }, 100)
 
   }
