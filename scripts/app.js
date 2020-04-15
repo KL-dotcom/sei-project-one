@@ -96,6 +96,7 @@ function init() {
 
       if (this.lives === 0) {
         clearInterval(gameTimer)
+        updateP.innerHTML = 'You Lose :('
       }
     }
   }
@@ -242,10 +243,11 @@ function init() {
         clearInterval(gameTimer)
         playGame2()
         frog.level = frog.level + 1
-        console.log(frog.level)
+        updateP.innerHTML = 'Level 2'
       } else if (winArray.length === 4) {
         update()
         clearInterval(gameTimer)
+        updateP.innerHTML = 'You Won!'
       }
     }
   }
@@ -257,6 +259,7 @@ function init() {
   const score = document.querySelector('#score')
   const lives = document.querySelector('#lives')
   const button = document.querySelector('button')
+  const updateP = document.querySelector('.updatesBoard', 'p')
 
   function update() {
     // adding info to the elements
@@ -267,8 +270,9 @@ function init() {
 
   function hideBtn() {
     button.style.visibility = 'hidden'
-
+    updateP.innerHTML = 'Level 1'
   }
+
 
 
   // execution
@@ -402,7 +406,7 @@ function init() {
       winTwo.youWon()
       winOne.finalWin()
       winTwo.finalWin()
-      water.collision()
+      //water.collision()
     }, 100)
 
   }
