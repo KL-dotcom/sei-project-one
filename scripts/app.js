@@ -12,7 +12,7 @@ function init() {
       for (let x = 0; x < width; x++) {
         const cell = document.createElement('div')
         grid.appendChild(cell)
-        // cell.textContent = 'y:' + y + ', x:' + x
+        //cell.textContent = 'y:' + y + ', x:' + x
         cells[y][x] = cell
       }
     }
@@ -98,6 +98,29 @@ function init() {
       }
     }
   }
+
+  // * water effects 
+
+  function addWaterEffect(pos1, pos2) {
+    cells[pos1][pos2].classList.add('water-ripples')
+  }
+
+  addWaterEffect(1, 8)
+  addWaterEffect(2, 5)
+  addWaterEffect(3, 1)
+  addWaterEffect(4, 6)
+
+  // * grass effects
+
+  function addGrassEffect(pos1, pos2) {
+    cells[pos1][pos2].classList.add('grass')
+  }
+
+  addGrassEffect(8, 5)
+  addGrassEffect(6, 9)
+  addGrassEffect(9, 2)
+  addGrassEffect(5, 4)
+  addGrassEffect(7, 2)
 
   //making classes
   class Entity {
@@ -285,9 +308,9 @@ function init() {
       truck.moveBackwards()
       //truck.collision()
       truck2.moveBackwards()
-      //truck2.collision()
+      truck2.collision()
       truck3.moveBackwards()
-      //truck3.collision()
+      truck3.collision()
       car.moveBackwards()
       //car.collision()
       car2.moveBackwards()
@@ -319,7 +342,7 @@ function init() {
       winTwo.youWon()
       winOne.finalWin()
       winTwo.finalWin()
-      //water.collision()
+      water.collision()
     }, 100)
 
   }

@@ -13,6 +13,17 @@ body {
   font-family: 'Patrick Hand', cursive;
 }
 
+body.goth {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  background-color: black;
+  color: black;
+  font-family: 'Patrick Hand', cursive;
+}
+
 .grid-wrapper {
   height: 90vh;
   display: flex;
@@ -33,11 +44,91 @@ body {
   border-radius: 16px;
 }
 
+.grid.goth {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  justify-content: center;
+  height: 650px;
+  width: 750px;
+  margin: 50px;
+  background-color: green;
+  border: 16px solid red;
+  border-radius: 0;
+}
+
 .grid div {
   /* border: 1px solid lightgrey; */
   flex-grow: 1;
   height: 10%;
   width: 10%;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-between;
+  padding: 60px;
+}
+
+p {
+  font-size: 20px;
+}
+
+.updatesBoard {
+  height: 350px;
+  width: 400px;
+  border: 16px solid purple;
+  border-radius: 16px;
+  background-color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.updatesBoard.goth {
+  height: 350px;
+  width: 400px;
+  border: 16px solid red;
+  border-radius: 0;
+  background-color: grey;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+
+.updatesBoard p {
+  padding: 30px;
+  line-height: 2;
+}
+
+.container {
+  height: 250px;
+  width: 300px;
+  border: 16px solid purple;
+  border-radius: 16px;
+  text-align: center;
+  background-color: white;
+}
+
+.container.goth {
+  height: 250px;
+  width: 300px;
+  border: 16px solid red;
+  border-radius: 0;
+  text-align: center;
+  background-color: grey;
+}
+
+button {
+  background-color: purple;
+  border-radius: 4px;
+  color: white;
+  height: ;
 }
 
 .frog {
@@ -62,10 +153,6 @@ body {
   background-image: url('https://media.giphy.com/media/3ov9jZcYgtiOgUeipq/giphy.gif');
   background-repeat: no-repeat;
   background-size: contain;
-}
-
-.car {
-  background-color: teal;
 }
 
 .water {
@@ -102,48 +189,6 @@ body {
   background-size: contain;
 }
 
-section {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: space-between;
-  padding: 60px;
-}
-
-p {
-  font-size: 20px;
-}
-
-h1 {
-  font-size: 30px;
-}
-
-.updatesBoard {
-  height: 350px;
-  width: 400px;
-  border: 16px solid purple;
-  border-radius: 16px;
-  background-color: white;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.updatesBoard p {
-  padding: 30px;
-  line-height: 2;
-}
-
-.container {
-  height: 250px;
-  width: 300px;
-  border: 16px solid purple;
-  border-radius: 16px;
-  text-align: center;
-  background-color: white;
-}
-
 .win {
   background-image: url('../assets/foodbowl.png');
   background-repeat: no-repeat;
@@ -156,8 +201,26 @@ h1 {
   background-size: contain;
 }
 
-.grass-edge {
-  background-image: url('https://media.giphy.com/media/M3Nu5KLHOHHd6/giphy.gif');
+.grass.black-cat {
+  background-image: url('https://media.giphy.com/media/7OX3QcMAcN4blQBxC5/giphy.gif'), url('https://media.giphy.com/media/hTItiQoLZfO69tYY9k/giphy.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.grass.white-cat {
+  background-image: url('https://media.giphy.com/media/7OX3QcMAcN4blQBxC5/giphy.gif'), url('https://media.giphy.com/media/j3cBjQKWlT67ned7lX/giphy.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.grass.running-cat {
+  background-image: url('https://media.giphy.com/media/7OX3QcMAcN4blQBxC5/giphy.gif'), url('https://media.giphy.com/media/3ov9jZcYgtiOgUeipq/giphy.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.grass.frog {
+  background-image: url('https://media.giphy.com/media/7OX3QcMAcN4blQBxC5/giphy.gif'), url('https://media.giphy.com/media/2Yem5C2E1R2LjzJ6v2/giphy.gif');
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -168,14 +231,21 @@ h1 {
   background-size: contain;
 }
 
-.black-cat.frog {
-  background-image: url('https://media.giphy.com/media/duXXNSSftjqHchv4XI/giphy.gif');
+.water-ripples.water.log {
+  background-image: url('https://media.giphy.com/media/jTlePYX9Pmkucvu1QO/giphy.gif'), url('https://media.giphy.com/media/6qpSkp6II9Vv8MWWnO/giphy.gif');
   background-repeat: no-repeat;
   background-size: contain;
 }
 
+/* .black-cat.frog {
+  background-image: url('https://media.giphy.com/media/duXXNSSftjqHchv4XI/giphy.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
+} */
+
+/* 
 .water.frog {
   background-image: url('https://media.giphy.com/media/YOk7USZ9k8yF4R0yn3/giphy.gif');
   background-repeat: no-repeat;
   background-size: contain;
-}
+} */
