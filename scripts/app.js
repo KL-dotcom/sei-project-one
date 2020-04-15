@@ -1,6 +1,6 @@
 function init() {
 
-  //* get the grid
+  // get the grid
   const grid = document.querySelector('.grid')
   const cells = []
   const height = 10
@@ -139,7 +139,7 @@ function init() {
     }
     collision() {
       if (this.positionY === frog.positionY && this.positionX === frog.positionX) {
-        console.log('you lose')
+        cells[frog.positionX][frog.positionY].classList.add('fight')
         cells[frog.positionY][frog.positionX].classList.remove('frog')
         frog.positionY = 9
         frog.positionX = 4
@@ -174,21 +174,6 @@ function init() {
         cells[frog.positionY][frog.positionX].classList.add('frog')
       }
     }
-    // frogMove() {
-    //   if (this.positionY === frog.positionY && this.positionX === frog.positionX) {
-
-    //     if (Date.now() - this.lastMovedAt > (this.speed)) {
-    //       cells[frog.positionY][frog.positionX].classList.remove('frog', this.className)
-    //       const newX = (frog.positionX + 1) % width
-    //       frog.positionX = newX
-    //       cells[frog.positionY][frog.positionX].classList.add('frog', this.className)
-    //       this.lastMovedAt = Date.now()
-
-    //     }
-    //   } else {
-    //     this.move()
-    //   }
-    // }
   }
 
   // also a level two maybe to final win
@@ -201,16 +186,21 @@ function init() {
       this.positionY = positionY
     }
     winArray = []
-    youWin() {
+    toWin() {
+      cells[this.positionY][this.positionX].classList.add('win')
+    }
+    youWon() {
       if (this.positionY === frog.positionY && this.positionX === frog.positionX) {
-        if (cells[this.positionY][this.positionX].classList.contains('win')) {
+        if (cells[this.positionY][this.positionX].classList.contains('won')) {
+          console.log('already there')
           frog.positionY = 9
           frog.positionX = 4
           frog.lives = frog.lives - 1
           update()
         } else {
-          cells[frog.positionY][frog.positionX].classList.remove('frog')
-          cells[frog.positionY][frog.positionX].classList.add('win')
+          console.log('adding the class')
+          cells[this.positionY][this.positionX].classList.remove('frog')
+          cells[frog.positionY][frog.positionX].classList.add('won')
           winArray.push('win' + this.positionX)
           console.log(winArray, winArray.length)
           frog.positionY = 9
@@ -226,6 +216,7 @@ function init() {
       }
     }
   }
+
 
   // the side bar with lives and the button
 
@@ -281,6 +272,8 @@ function init() {
   const meanTurtle2 = new WaterPlatform(4, 3, 999, 'box')
   const meanTurtle3 = new WaterPlatform(4, 6, 999, 'box')
 
+  winOne.toWin()
+  winTwo.toWin()
 
   let gameTimer
 
@@ -294,7 +287,7 @@ function init() {
       truck2.moveBackwards()
       //truck2.collision()
       truck3.moveBackwards()
-      // truck3.collision()
+      //truck3.collision()
       car.moveBackwards()
       //car.collision()
       car2.moveBackwards()
@@ -322,8 +315,8 @@ function init() {
       meanTurtle2.move()
       meanTurtle3.move()
       frog.numberOfLives()
-      winOne.youWin()
-      winTwo.youWin()
+      winOne.youWon()
+      winTwo.youWon()
       winOne.finalWin()
       winTwo.finalWin()
       //water.collision()

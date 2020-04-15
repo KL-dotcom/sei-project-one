@@ -96,8 +96,10 @@ body {
   background-size: contain;
 }
 
-.win {
-  background-color: yellow;
+.won.win {
+  background-image: url('../assets/foodbowl.png'), url('https://media.giphy.com/media/2Yem5C2E1R2LjzJ6v2/giphy.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 section {
@@ -122,6 +124,15 @@ h1 {
   border: 16px solid purple;
   border-radius: 16px;
   background-color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.updatesBoard p {
+  padding: 30px;
+  line-height: 2;
 }
 
 .container {
@@ -133,8 +144,8 @@ h1 {
   background-color: white;
 }
 
-.tuna {
-  background-image: url('https://media.giphy.com/media/dZoY4P7TV8O8sBbT5x/giphy.gif');
+.win {
+  background-image: url('../assets/foodbowl.png');
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -157,13 +168,13 @@ h1 {
   background-size: contain;
 }
 
-.fight {
+.black-cat.frog {
   background-image: url('https://media.giphy.com/media/duXXNSSftjqHchv4XI/giphy.gif');
   background-repeat: no-repeat;
   background-size: contain;
 }
 
-.splash {
+.water.frog {
   background-image: url('https://media.giphy.com/media/YOk7USZ9k8yF4R0yn3/giphy.gif');
   background-repeat: no-repeat;
   background-size: contain;
