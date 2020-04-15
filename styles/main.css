@@ -8,8 +8,9 @@ body {
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-around;
-  background-color: darkgray;
-  color: white;
+  background-color: lightpink;
+  color: brown;
+  font-family: 'Patrick Hand', cursive;
 }
 
 .grid-wrapper {
@@ -20,19 +21,20 @@ body {
 
 .grid {
   align-items: center;
-  /* box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2); */
   display: flex;
   flex-wrap: wrap;
   height: 100%;
   justify-content: center;
-  height: 700px;
-  width: 800px;
-  margin-top: 50px;
-  background-color: black;
+  height: 650px;
+  width: 700px;
+  margin: 50px;
+  background-color: green;
+  border: 16px solid purple;
+  border-radius: 16px;
 }
 
 .grid div {
-  /* border: 1px solid lightgrey; */
+  border: 1px solid lightgrey;
   flex-grow: 1;
   height: 10%;
   width: 10%;
@@ -75,24 +77,35 @@ body {
   background-color: yellow;
 }
 
-.screen {
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-wrap: wrap;
-  height: 100%;
-  justify-content: center;
-  height: 600px;
-  width: 600px;
-  background-color: black;
-}
-
 section {
   display: flex;
   flex-direction: column;
   align-content: center;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 60px;
 }
 
 p {
   font-size: 20px;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+.updatesBoard {
+  height: 350px;
+  width: 400px;
+  border: 16px solid purple;
+  border-radius: 16px;
+  background-color: white;
+}
+
+.container {
+  height: 250px;
+  width: 300px;
+  border: 16px solid purple;
+  border-radius: 16px;
+  text-align: center;
+  background-color: white;
 }

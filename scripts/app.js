@@ -291,19 +291,19 @@ function init() {
 
       frog.move()
       truck.move()
-      //truck.collision()
+      truck.collision()
       truck2.move()
-      // truck2.collision()
+      truck2.collision()
       truck3.move()
-      //truck3.collision()
+      truck3.collision()
       car.move()
-      //car.collision()
+      car.collision()
       car2.move()
-      //car2.collision()
+      car2.collision()
       car3.move()
-      //car3.collision()
+      car3.collision()
       car4.move()
-      //car4.collision()
+      car4.collision()
       log.move()
       log2.move()
       log3.move()
@@ -325,13 +325,13 @@ function init() {
       winTwo.youWin()
       winOne.finalWin()
       winTwo.finalWin()
-      //water.collision()
+      water.collision()
     }, 100)
 
   }
 
 
-
+  // if I set all of the calls within another function, then I can reset interval timer - could work, maybe set another button as reset time instead of re-writing the innerHTML
 
 
   // event listeners
