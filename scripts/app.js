@@ -12,7 +12,7 @@ function init() {
       for (let x = 0; x < width; x++) {
         const cell = document.createElement('div')
         grid.appendChild(cell)
-        cell.textContent = 'y:' + y + ', x:' + x
+        //cell.textContent = 'y:' + y + ', x:' + x
         cells[y][x] = cell
       }
     }
@@ -127,6 +127,8 @@ function init() {
       if (this.lives === 0) {
         clearInterval(gameTimer)
         updateP.innerHTML = 'You Lose :('
+        audio.src = '/Users/krissy/development/PROJECTS/sei-project-one/assets/lose.mp3'
+        audio.play()
       }
     }
   }
@@ -273,6 +275,7 @@ function init() {
       if (winArray.length === 4 && frog.level === 1) {
         update()
         clearInterval(gameTimer)
+
         playGame2()
         frog.level = frog.level + 1
         updateP.innerHTML = 'Level 2'
@@ -280,6 +283,8 @@ function init() {
         update()
         clearInterval(gameTimer)
         updateP.innerHTML = 'You Won!'
+        audio.src = '/Users/krissy/development/PROJECTS/sei-project-one/assets/winner.mp3'
+        audio.play()
       }
     }
   }
@@ -358,21 +363,21 @@ function init() {
 
       frog.move()
       truck.moveBackwards()
-      //truck.collision()
+      truck.collision()
       truck2.moveBackwards()
-      //truck2.collision()
+      truck2.collision()
       truck3.moveBackwards()
       truck3.collision()
       car.moveBackwards()
-      //car.collision()
+      car.collision()
       car2.moveBackwards()
-      //car2.collision()
+      car2.collision()
       car3.moveBackwards()
-      //car3.collision()
+      car3.collision()
       car4.moveBackwards()
-      //car4.collision()
+      car4.collision()
       fastCat.move()
-      //fastCat.collision()
+      fastCat.collision()
       log.move()
       log2.move()
       log3.move()
@@ -414,21 +419,21 @@ function init() {
     gameTimer = setInterval(() => {
       frog.move()
       truck.moveBackwards()
-      //truck.collision()
+      truck.collision()
       truck2.moveBackwards()
-      //truck2.collision()
+      truck2.collision()
       truck3.moveBackwards()
-      //truck3.collision()
+      truck3.collision()
       car.moveBackwards()
-      //car.collision()
+      car.collision()
       car2.moveBackwards()
-      //car2.collision()
+      car2.collision()
       car3.moveBackwards()
-      //car3.collision()
+      car3.collision()
       car4.moveBackwards()
-      //car4.collision()
+      car4.collision()
       fastCat.move()
-      //fastCat.collision()
+      fastCat.collision()
       log.move()
       log2.move()
       log3.move()
