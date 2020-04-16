@@ -12,7 +12,7 @@ function init() {
       for (let x = 0; x < width; x++) {
         const cell = document.createElement('div')
         grid.appendChild(cell)
-        //cell.textContent = 'y:' + y + ', x:' + x
+        cell.textContent = 'y:' + y + ', x:' + x
         cells[y][x] = cell
       }
     }
@@ -284,6 +284,8 @@ function init() {
 
   const winOne = new Win(0, 5)
   const winTwo = new Win(0, 3)
+  const winThree = new Win(0, 7)
+  const winFour = new Win(0, 1)
   const truck = new Entity(8, 9, 600, 'black-cat')
   const truck2 = new Entity(8, 1, 600, 'black-cat')
   const truck3 = new Entity(8, 4, 600, 'black-cat')
@@ -311,6 +313,8 @@ function init() {
 
   winOne.toWin()
   winTwo.toWin()
+  winThree.toWin()
+  winFour.toWin()
 
   let gameTimer
 
@@ -356,6 +360,8 @@ function init() {
       winTwo.youWon()
       winOne.finalWin()
       winTwo.finalWin()
+      winThree.finalWin()
+      winFour.finalWin()
       //water.collision()
     }, 100)
 
@@ -406,6 +412,8 @@ function init() {
       winTwo.youWon()
       winOne.finalWin()
       winTwo.finalWin()
+      winThree.finalWin()
+      winFour.finalWin()
       //water.collision()
     }, 100)
 
