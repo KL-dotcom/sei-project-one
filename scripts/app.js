@@ -333,6 +333,7 @@ function init() {
   const winTwo = new Win(0, 3)
   const winThree = new Win(0, 7)
   const winFour = new Win(0, 1)
+
   const truck = new Entity(8, 2, 500, 'black-cat')
   const truck2 = new Entity(8, 5, 500, 'black-cat')
   const car = new Entity(6, 1, 600, 'white-cat')
@@ -341,18 +342,19 @@ function init() {
   const fastCat = new Entity(7, 5, 200, 'running-cat')
 
 
-  const log = new WaterPlatform(2, 1, 500, 'box')
-  const log2 = new WaterPlatform(2, 7, 500, 'box')
+  const log = new WaterPlatform(2, 1, 600, 'box')
+  const log2 = new WaterPlatform(2, 7, 600, 'box')
 
 
   const turtle = new WaterPlatform(1, 1, 600, 'log')
   const turtle2 = new WaterPlatform(1, 2, 600, 'log')
+  const turtle3 = new WaterPlatform(1, 8, 600, 'log')
+  const turtle4 = new WaterPlatform(1, 9, 600, 'log')
 
-
-  const bigLog = new WaterPlatform(3, 1, 600, 'log')
-  const bigLog2 = new WaterPlatform(3, 2, 600, 'log')
-  const bigLog3 = new WaterPlatform(3, 3, 600, 'log')
-  const bigLog4 = new WaterPlatform(3, 4, 600, 'log')
+  const bigLog = new WaterPlatform(3, 1, 700, 'log')
+  const bigLog2 = new WaterPlatform(3, 2, 700, 'log')
+  const bigLog3 = new WaterPlatform(3, 3, 700, 'log')
+  const bigLog4 = new WaterPlatform(3, 4, 700, 'log')
 
 
   const meanTurtle = new WaterPlatform(4, 3, 400, 'box')
@@ -390,6 +392,8 @@ function init() {
 
       turtle.moveBackwards()
       turtle2.moveBackwards()
+      turtle3.moveBackwards()
+      turtle4.moveBackwards()
 
       bigLog.moveBackwards()
       bigLog2.moveBackwards()
@@ -413,6 +417,33 @@ function init() {
 
   }
 
+  const blackCat = new Entity(8, 2, 400, 'black-cat')
+  const blackCat2 = new Entity(8, 5, 400, 'black-cat')
+  const whiteCat = new Entity(6, 1, 500, 'white-cat')
+  const whiteCat2 = new Entity(6, 4, 500, 'white-cat')
+  const whiteCat3 = new Entity(6, 9, 500, 'white-cat')
+
+  const gothFastCat = new Entity(7, 5, 100, 'running-cat')
+  const gothFastCat2 = new Entity(7, 0, 100, 'running-cat')
+
+  const gothBox = new WaterPlatform(2, 1, 400, 'box')
+  const gothBox2 = new WaterPlatform(2, 7, 400, 'box')
+
+
+  const fish = new WaterPlatform(1, 1, 500, 'log')
+  const fish2 = new WaterPlatform(1, 2, 500, 'log')
+
+
+  const fish3 = new WaterPlatform(3, 1, 400, 'log')
+  const fish4 = new WaterPlatform(3, 2, 400, 'log')
+  const fish5 = new WaterPlatform(3, 3, 400, 'log')
+
+
+
+  const gothBox3 = new WaterPlatform(4, 3, 400, 'box')
+  const gothBox4 = new WaterPlatform(4, 5, 400, 'box')
+  const gothBox5 = new WaterPlatform(4, 7, 400, 'box')
+
 
 
   function playGame2() {
@@ -425,35 +456,33 @@ function init() {
     gameTimer = setInterval(() => {
 
       frog.move()
-      truck.moveBackwards()
-      // truck.collision()
-      truck2.moveBackwards()
-      //truck2.collision()
+      blackCat.moveBackwards()
+      blackCat.collision()
+      blackCat2.moveBackwards()
+      blackCat2.collision()
 
-      car.moveBackwards()
-      //car.collision()
-      car2.moveBackwards()
-      //car2.collision()
-      car3.moveBackwards()
-      //car3.collision()
-      fastCat.move()
-      fastCat.collision()
-      log.move()
-      log2.move()
-      log3.move()
-      log4.move()
-      log5.move()
-      turtle.moveBackwards()
-      turtle2.moveBackwards()
-      turtle3.moveBackwards()
-      bigLog.moveBackwards()
-      bigLog2.moveBackwards()
-      bigLog3.moveBackwards()
-      bigLog4.moveBackwards()
-      bigLog5.moveBackwards()
-      meanTurtle.move()
-      meanTurtle2.move()
-      meanTurtle3.move()
+      whiteCat.moveBackwards()
+      whiteCat.collision()
+      whiteCat2.moveBackwards()
+      whiteCat2.collision()
+      whiteCat3.moveBackwards()
+      whiteCat3.collision()
+      gothFastCat.move()
+      gothFastCat.collision()
+      gothFastCat2.move()
+      gothFastCat2.collision()
+
+      fish.moveBackwards()
+      fish2.moveBackwards()
+      fish3.moveBackwards()
+      fish4.moveBackwards()
+      fish5.moveBackwards()
+      gothBox.move()
+      gothBox2.move()
+      gothBox3.move()
+      gothBox4.move()
+      gothBox5.move()
+
       frog.numberOfLives()
       winOne.youWon()
       winTwo.youWon()
@@ -463,7 +492,7 @@ function init() {
       winTwo.finalWin()
       winThree.finalWin()
       winFour.finalWin()
-      //water.collision()
+      water.collision()
     }, 100)
 
   }
