@@ -39,14 +39,11 @@ function init() {
         if (waterDiv.classList.contains('water') && waterDiv.classList.contains('frog') && waterDiv.classList.length === 2 || waterDiv.classList.contains('water') && waterDiv.classList.contains('frog') && waterDiv.classList.contains('water-ripples') && waterDiv.classList.length === 3) {
           const y = frog.positionY
           const x = frog.positionX
-          console.log('boom')
           cells[frog.positionY][frog.positionX].classList.remove('frog')
           cells[frog.positionY][frog.positionX].classList.add('splash')
           frog.positionY = 9
           frog.positionX = 4
-          console.log('new position')
           frog.lives = frog.lives - 1
-          console.log('new lives count')
           update()
 
           setTimeout(() => {
@@ -77,16 +74,14 @@ function init() {
   // audio tag
 
   const audio = document.querySelector('audio')
-  console.log(audio)
 
   function cuteSound() {
-    audio.src = '/Users/krissy/development/PROJECTS/sei-project-one/assets/cute.mp3'
+    audio.src = './assets/cute.mp3'
     audio.play()
-    console.log('play music')
   }
 
   function gothSound() {
-    audio.src = '/Users/krissy/development/PROJECTS/sei-project-one/assets/goth.mp3'
+    audio.src = './assets/goth.mp3'
     audio.play()
   }
 
@@ -134,7 +129,7 @@ function init() {
       if (this.lives === 0) {
         clearInterval(gameTimer)
         updateP.innerHTML = 'You Lose :('
-        audio.src = '/Users/krissy/development/PROJECTS/sei-project-one/assets/lose.mp3'
+        audio.src = './assets/lose.mp3'
         audio.play()
       }
     }
@@ -173,32 +168,32 @@ function init() {
       this.speed = speed
       this.name = name
     }
-    lastMovedAt = Date.now()
-    move() {
-      if (Date.now() - this.lastMovedAt > this.speed) {
+    lastMovedAt = null
+    move(timestamp) {
+      if (this.lastMovedAt === null || timestamp - this.lastMovedAt > this.speed) {
         if (this.positionX >= 0) {
           cells[this.positionY][this.positionX].classList.remove(this.name)
         }
 
         this.positionX = (this.positionX + 1) % width
         cells[this.positionY][this.positionX].classList.add(this.name)
-        this.lastMovedAt = Date.now()
+        this.lastMovedAt = timestamp
       }
     }
-    moveBackwards() {
-      if (Date.now() - this.lastMovedAt > this.speed) {
+    moveBackwards(timestamp) {
+      if (this.lastMovedAt === null || timestamp - this.lastMovedAt > this.speed) {
         if (this.positionX <= 0) {
           cells[this.positionY][this.positionX].classList.remove(this.name)
           this.positionX = width - 1
           cells[this.positionY][this.positionX].classList.add(this.name)
-          this.lastMovedAt = Date.now()
+          this.lastMovedAt = timestamp
 
           return
         }
         cells[this.positionY][this.positionX].classList.remove(this.name)
         this.positionX = this.positionX - 1
         cells[this.positionY][this.positionX].classList.add(this.name)
-        this.lastMovedAt = Date.now()
+        this.lastMovedAt = timestamp
 
 
       }
@@ -227,9 +222,9 @@ function init() {
     constructor(positionY, positionX, speed, name) {
       super(positionY, positionX, speed, name)
     }
-    move() {
+    move(timestamp) {
       const isFrogOnPlatform = this.positionY === frog.positionY && this.positionX === frog.positionX
-      super.move()
+      super.move(timestamp)
       if (isFrogOnPlatform) {
         cells[frog.positionY][frog.positionX].classList.remove('frog')
         frog.positionY = this.positionY
@@ -238,9 +233,9 @@ function init() {
       }
 
     }
-    moveBackwards() {
+    moveBackwards(timestamp) {
       const isFrogOnPlatform = this.positionY === frog.positionY && this.positionX === frog.positionX
-      super.moveBackwards()
+      super.moveBackwards(timestamp)
       if (isFrogOnPlatform) {
         cells[frog.positionY][frog.positionX].classList.remove('frog')
         frog.positionY = this.positionY
@@ -267,13 +262,11 @@ function init() {
     youWon() {
       if (this.positionY === frog.positionY && this.positionX === frog.positionX) {
         if (cells[this.positionY][this.positionX].classList.contains('won')) {
-          console.log('already there')
           frog.positionY = 9
           frog.positionX = 4
           frog.lives = frog.lives - 1
           update()
         } else {
-          console.log('adding the class')
           cells[this.positionY][this.positionX].classList.remove('frog')
           cells[frog.positionY][frog.positionX].classList.add('won')
           winArray.push('win' + this.positionX)
@@ -299,7 +292,7 @@ function init() {
         update()
         clearInterval(gameTimer)
         updateP.innerHTML = 'You Won!'
-        audio.src = '/Users/krissy/development/PROJECTS/sei-project-one/assets/winner.mp3'
+        audio.src = './assets/winner.mp3'
         audio.play()
       }
     }
@@ -387,37 +380,39 @@ function init() {
 
     gameTimer = setInterval(() => {
 
+      const timestamp = Date.now()
+
       frog.move()
-      truck.moveBackwards()
+      truck.moveBackwards(timestamp)
       truck.collision()
-      truck2.moveBackwards()
+      truck2.moveBackwards(timestamp)
       truck2.collision()
 
-      car.moveBackwards()
+      car.moveBackwards(timestamp)
       car.collision()
-      car2.moveBackwards()
+      car2.moveBackwards(timestamp)
       car2.collision()
-      car3.moveBackwards()
+      car3.moveBackwards(timestamp)
       car3.collision()
-      fastCat.move()
+      fastCat.move(timestamp)
       fastCat.collision()
-      log.move()
-      log2.move()
+      log.move(timestamp)
+      log2.move(timestamp)
 
 
-      turtle.moveBackwards()
-      turtle2.moveBackwards()
-      turtle3.moveBackwards()
-      turtle4.moveBackwards()
+      turtle.moveBackwards(timestamp)
+      turtle2.moveBackwards(timestamp)
+      turtle3.moveBackwards(timestamp)
+      turtle4.moveBackwards(timestamp)
 
-      bigLog.moveBackwards()
-      bigLog2.moveBackwards()
-      bigLog3.moveBackwards()
-      bigLog4.moveBackwards()
+      bigLog.moveBackwards(timestamp)
+      bigLog2.moveBackwards(timestamp)
+      bigLog3.moveBackwards(timestamp)
+      bigLog4.moveBackwards(timestamp)
 
-      meanTurtle.move()
-      meanTurtle2.move()
-      meanTurtle3.move()
+      meanTurtle.move(timestamp)
+      meanTurtle2.move(timestamp)
+      meanTurtle3.move(timestamp)
       frog.numberOfLives()
       winOne.youWon()
       winTwo.youWon()
@@ -469,34 +464,35 @@ function init() {
     winFour.resetWin()
     gothSound()
     gameTimer = setInterval(() => {
+      const timestamp = Date.now()
 
       frog.move()
-      blackCat.moveBackwards()
+      blackCat.moveBackwards(timestamp)
       blackCat.collision()
-      blackCat2.moveBackwards()
+      blackCat2.moveBackwards(timestamp)
       blackCat2.collision()
 
-      whiteCat.moveBackwards()
+      whiteCat.moveBackwards(timestamp)
       whiteCat.collision()
-      whiteCat2.moveBackwards()
+      whiteCat2.moveBackwards(timestamp)
       whiteCat2.collision()
-      whiteCat3.moveBackwards()
+      whiteCat3.moveBackwards(timestamp)
       whiteCat3.collision()
-      gothFastCat.move()
+      gothFastCat.move(timestamp)
       gothFastCat.collision()
-      gothFastCat2.move()
+      gothFastCat2.move(timestamp)
       gothFastCat2.collision()
 
-      fish.moveBackwards()
-      fish2.moveBackwards()
-      fish3.moveBackwards()
-      fish4.moveBackwards()
-      fish5.moveBackwards()
-      gothBox.move()
-      gothBox2.move()
-      gothBox3.move()
-      gothBox4.move()
-      gothBox5.move()
+      fish.moveBackwards(timestamp)
+      fish2.moveBackwards(timestamp)
+      fish3.moveBackwards(timestamp)
+      fish4.moveBackwards(timestamp)
+      fish5.moveBackwards(timestamp)
+      gothBox.move(timestamp)
+      gothBox2.move(timestamp)
+      gothBox3.move(timestamp)
+      gothBox4.move(timestamp)
+      gothBox5.move(timestamp)
 
       frog.numberOfLives()
       winOne.youWon()
