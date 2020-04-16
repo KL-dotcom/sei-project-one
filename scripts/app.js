@@ -276,7 +276,7 @@ function init() {
       if (winArray.length === 4 && frog.level === 1) {
         update()
         clearInterval(gameTimer)
-        playGame2()
+        setTimeout(playGame2, 1500)
         frog.level = frog.level + 1
         updateP.innerHTML = 'Level 2'
 
@@ -315,6 +315,7 @@ function init() {
   // make a proper reset button 
   function resetPage() {
     window.location.reload()
+    playGame()
 
   }
 
@@ -332,30 +333,31 @@ function init() {
   const winTwo = new Win(0, 3)
   const winThree = new Win(0, 7)
   const winFour = new Win(0, 1)
-  const truck = new Entity(8, 9, 600, 'black-cat')
-  const truck2 = new Entity(8, 1, 600, 'black-cat')
-  const truck3 = new Entity(8, 4, 600, 'black-cat')
-  const car = new Entity(6, 0, 600, 'white-cat')
-  const car2 = new Entity(6, 2, 600, 'white-cat')
-  const car3 = new Entity(6, 4, 600, 'white-cat')
-  const car4 = new Entity(6, 8, 600, 'white-cat')
-  const fastCat = new Entity(7, 0, 200, 'running-cat')
-  const log = new WaterPlatform(2, 4, 600, 'log')
-  const log2 = new WaterPlatform(2, 3, 600, 'log')
-  const log3 = new WaterPlatform(2, 2, 600, 'log')
-  const log4 = new WaterPlatform(2, 1, 600, 'log')
-  const log5 = new WaterPlatform(2, 0, 600, 'log')
-  const turtle = new WaterPlatform(1, 0, 600, 'log')
-  const turtle2 = new WaterPlatform(1, 3, 600, 'log')
-  const turtle3 = new WaterPlatform(1, 5, 600, 'log')
+  const truck = new Entity(8, 2, 500, 'black-cat')
+  const truck2 = new Entity(8, 5, 500, 'black-cat')
+  const car = new Entity(6, 1, 600, 'white-cat')
+  const car2 = new Entity(6, 4, 600, 'white-cat')
+  const car3 = new Entity(6, 9, 600, 'white-cat')
+  const fastCat = new Entity(7, 5, 200, 'running-cat')
+
+
+  const log = new WaterPlatform(2, 1, 500, 'box')
+  const log2 = new WaterPlatform(2, 7, 500, 'box')
+
+
+  const turtle = new WaterPlatform(1, 1, 600, 'log')
+  const turtle2 = new WaterPlatform(1, 2, 600, 'log')
+
+
   const bigLog = new WaterPlatform(3, 1, 600, 'log')
   const bigLog2 = new WaterPlatform(3, 2, 600, 'log')
   const bigLog3 = new WaterPlatform(3, 3, 600, 'log')
   const bigLog4 = new WaterPlatform(3, 4, 600, 'log')
-  const bigLog5 = new WaterPlatform(3, 5, 600, 'log')
-  const meanTurtle = new WaterPlatform(4, 1, 999, 'box')
-  const meanTurtle2 = new WaterPlatform(4, 3, 999, 'box')
-  const meanTurtle3 = new WaterPlatform(4, 6, 999, 'box')
+
+
+  const meanTurtle = new WaterPlatform(4, 3, 400, 'box')
+  const meanTurtle2 = new WaterPlatform(4, 5, 400, 'box')
+  const meanTurtle3 = new WaterPlatform(4, 7, 400, 'box')
 
   winOne.toWin()
   winTwo.toWin()
@@ -370,34 +372,30 @@ function init() {
 
       frog.move()
       truck.moveBackwards()
-      // truck.collision()
+      truck.collision()
       truck2.moveBackwards()
-      //truck2.collision()
-      truck3.moveBackwards()
-      //truck3.collision()
+      truck2.collision()
+
       car.moveBackwards()
-      //car.collision()
+      car.collision()
       car2.moveBackwards()
-      //car2.collision()
+      car2.collision()
       car3.moveBackwards()
-      //car3.collision()
-      car4.moveBackwards()
-      //car4.collision()
+      car3.collision()
       fastCat.move()
       fastCat.collision()
       log.move()
       log2.move()
-      log3.move()
-      log4.move()
-      log5.move()
+
+
       turtle.moveBackwards()
       turtle2.moveBackwards()
-      turtle3.moveBackwards()
+
       bigLog.moveBackwards()
       bigLog2.moveBackwards()
       bigLog3.moveBackwards()
       bigLog4.moveBackwards()
-      bigLog5.moveBackwards()
+
       meanTurtle.move()
       meanTurtle2.move()
       meanTurtle3.move()
@@ -410,10 +408,11 @@ function init() {
       winTwo.finalWin()
       winThree.finalWin()
       winFour.finalWin()
-      //water.collision()
+      water.collision()
     }, 100)
 
   }
+
 
 
   function playGame2() {
@@ -424,23 +423,21 @@ function init() {
     winFour.resetWin()
     gothSound()
     gameTimer = setInterval(() => {
+
       frog.move()
       truck.moveBackwards()
-      //truck.collision()
+      // truck.collision()
       truck2.moveBackwards()
       //truck2.collision()
-      truck3.moveBackwards()
-      //truck3.collision()
+
       car.moveBackwards()
       //car.collision()
       car2.moveBackwards()
       //car2.collision()
       car3.moveBackwards()
       //car3.collision()
-      car4.moveBackwards()
-      //car4.collision()
       fastCat.move()
-      //fastCat.collision()
+      fastCat.collision()
       log.move()
       log2.move()
       log3.move()
