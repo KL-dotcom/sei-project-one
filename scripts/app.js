@@ -70,11 +70,20 @@ function init() {
   // audio tag
 
   const audio = document.querySelector('audio')
+  console.log(audio)
 
-  function playSound() {
-    audio.src =
-      audio.play()
+  function cuteSound() {
+    audio.src = '/Users/krissy/development/PROJECTS/sei-project-one/assets/cute.mp3'
+    audio.play()
+    console.log('play music')
   }
+
+  function gothSound() {
+    audio.src = '/Users/krissy/development/PROJECTS/sei-project-one/assets/goth.mp3'
+    audio.play()
+  }
+
+
 
   // making the frog
 
@@ -302,6 +311,8 @@ function init() {
 
   button.addEventListener('click', playGame)
   button.addEventListener('click', hideBtn)
+  button.addEventListener('click', cuteSound)
+
 
   // making new objects
 
@@ -399,7 +410,7 @@ function init() {
     winTwo.resetWin()
     winThree.resetWin()
     winFour.resetWin()
-
+    gothSound()
     gameTimer = setInterval(() => {
       frog.move()
       truck.moveBackwards()
