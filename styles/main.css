@@ -11,6 +11,7 @@ body {
   background-color: lightpink;
   color: brown;
   font-family: 'Patrick Hand', cursive;
+  font-size: 30px;
 }
 
 body.goth {
@@ -88,8 +89,8 @@ p {
 }
 
 .updatesBoard p {
-  padding: 30px;
-  line-height: 2;
+  padding: 50px;
+  font-size: 30px;
 }
 
 .container {
@@ -99,6 +100,7 @@ p {
   border-radius: 16px;
   text-align: center;
   background-color: white;
+  margin-bottom: 60px;
 }
 
 .goth .container {
@@ -237,18 +239,17 @@ button {
   background-size: contain;
 }
 
-/* .black-cat.frog {
+.crash {
   background-image: url('https://media.giphy.com/media/duXXNSSftjqHchv4XI/giphy.gif');
   background-repeat: no-repeat;
   background-size: contain;
-} */
+}
 
-/* 
-.water.frog {
+.splash {
   background-image: url('https://media.giphy.com/media/YOk7USZ9k8yF4R0yn3/giphy.gif');
   background-repeat: no-repeat;
   background-size: contain;
-} */
+}
 
 .button-container {
   display: flex;

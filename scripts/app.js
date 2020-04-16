@@ -37,14 +37,21 @@ function init() {
     collision() {
       this.cellsWater.forEach(waterDiv => {
         if (waterDiv.classList.contains('water') && waterDiv.classList.contains('frog') && waterDiv.classList.length === 2 || waterDiv.classList.contains('water') && waterDiv.classList.contains('frog') && waterDiv.classList.contains('water-ripples') && waterDiv.classList.length === 3) {
+          const y = frog.positionY
+          const x = frog.positionX
           console.log('boom')
           cells[frog.positionY][frog.positionX].classList.remove('frog')
+          cells[frog.positionY][frog.positionX].classList.add('splash')
           frog.positionY = 9
           frog.positionX = 4
           console.log('new position')
           frog.lives = frog.lives - 1
           console.log('new lives count')
           update()
+
+          setTimeout(() => {
+            cells[y][x].classList.remove('splash')
+          }, 500)
         }
 
       })
@@ -198,14 +205,22 @@ function init() {
     }
     collision() {
       if (this.positionY === frog.positionY && this.positionX === frog.positionX) {
-        cells[frog.positionX][frog.positionY].classList.add('fight')
+        const x = frog.positionX
+        const y = frog.positionY
         cells[frog.positionY][frog.positionX].classList.remove('frog')
         frog.positionY = 9
         frog.positionX = 4
         frog.lives = frog.lives - 1
         update()
+        cells[this.positionY][this.positionX].classList.add('crash')
+        setTimeout(() => {
+          cells[y][x].classList.remove('crash')
+        }, 500)
       }
     }
+    // removeCrash(y, x) {
+    //   cells[y][x].classList.remove('crash')
+    // }
   }
 
   class WaterPlatform extends Entity {
