@@ -172,13 +172,13 @@ button {
 }
 
 .water.box {
-  background-image: url('https://media.giphy.com/media/14SBvAKZSz8ikt6tV4/giphy.gif');
+  background-image: url('../assets/box-1.png');
   background-repeat: no-repeat;
   background-size: contain;
 }
 
 .frog.box.water {
-  background-image: url('https://media.giphy.com/media/2Yem5C2E1R2LjzJ6v2/giphy.gif'), url('https://media.giphy.com/media/14SBvAKZSz8ikt6tV4/giphy.gif');
+  background-image: url('https://media.giphy.com/media/2Yem5C2E1R2LjzJ6v2/giphy.gif'), url('../assets/box-1.png');
   background-repeat: no-repeat;
   background-size: contain;
 }

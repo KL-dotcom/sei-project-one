@@ -36,7 +36,7 @@ function init() {
     },
     collision() {
       this.cellsWater.forEach(waterDiv => {
-        if (waterDiv.classList.contains('water') && waterDiv.classList.contains('frog') && waterDiv.classList.length === 2) {
+        if (waterDiv.classList.contains('water') && waterDiv.classList.contains('frog') && waterDiv.classList.length === 2 || waterDiv.classList.contains('water') && waterDiv.classList.contains('frog') && waterDiv.classList.contains('water-ripples') && waterDiv.classList.length === 3) {
           console.log('boom')
           cells[frog.positionY][frog.positionX].classList.remove('frog')
           frog.positionY = 9
@@ -48,19 +48,40 @@ function init() {
         }
 
       })
+    },
+    topWater(x) {
+      const waterDiv = cells[0][x]
+      waterDiv.classList.add('water')
+      this.cellsWater.push(waterDiv)
     }
   }
 
 
   water.placeWater()
+  water.topWater(0)
+  water.topWater(9)
+  water.topWater(8)
+  water.topWater(2)
+  water.topWater(4)
+  water.topWater(6)
 
+
+
+  // audio tag
+
+  const audio = document.querySelector('audio')
+
+  function playSound() {
+    audio.src =
+      audio.play()
+  }
 
   // making the frog
 
   const frog = {
     positionY: 9,
     positionX: 4,
-    lives: 3,
+    lives: 9,
     level: 1,
     keyPressed: null,
     handlePlayerInput(event) {
@@ -111,6 +132,8 @@ function init() {
   addWaterEffect(2, 5)
   addWaterEffect(3, 1)
   addWaterEffect(4, 6)
+  addWaterEffect(0, 9)
+  addWaterEffect(0, 2)
 
   // * grass effects
 
@@ -238,13 +261,13 @@ function init() {
       cells[this.positionY][this.positionX].classList.remove('won')
     }
     finalWin() {
-      if (winArray.length === 2 && frog.level === 1) {
+      if (winArray.length === 4 && frog.level === 1) {
         update()
         clearInterval(gameTimer)
         playGame2()
         frog.level = frog.level + 1
         updateP.innerHTML = 'Level 2'
-      } else if (winArray.length === 4) {
+      } else if (winArray.length === 8) {
         update()
         clearInterval(gameTimer)
         updateP.innerHTML = 'You Won!'
@@ -358,11 +381,13 @@ function init() {
       frog.numberOfLives()
       winOne.youWon()
       winTwo.youWon()
+      winThree.youWon()
+      winFour.youWon()
       winOne.finalWin()
       winTwo.finalWin()
       winThree.finalWin()
       winFour.finalWin()
-      //water.collision()
+      water.collision()
     }, 100)
 
   }
@@ -372,6 +397,8 @@ function init() {
     makeGoth()
     winOne.resetWin()
     winTwo.resetWin()
+    winThree.resetWin()
+    winFour.resetWin()
 
     gameTimer = setInterval(() => {
       frog.move()
@@ -410,11 +437,13 @@ function init() {
       frog.numberOfLives()
       winOne.youWon()
       winTwo.youWon()
+      winThree.youWon()
+      winFour.youWon()
       winOne.finalWin()
       winTwo.finalWin()
       winThree.finalWin()
       winFour.finalWin()
-      //water.collision()
+      water.collision()
     }, 100)
 
   }
