@@ -249,3 +249,9 @@ button {
   background-repeat: no-repeat;
   background-size: contain;
 } */
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

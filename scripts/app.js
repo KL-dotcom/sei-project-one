@@ -244,6 +244,7 @@ function init() {
       this.positionX = positionX
       this.positionY = positionY
     }
+
     winArray = []
     toWin() {
       cells[this.positionY][this.positionX].classList.add('win')
@@ -275,10 +276,10 @@ function init() {
       if (winArray.length === 4 && frog.level === 1) {
         update()
         clearInterval(gameTimer)
-
         playGame2()
         frog.level = frog.level + 1
         updateP.innerHTML = 'Level 2'
+
       } else if (winArray.length === 8) {
         update()
         clearInterval(gameTimer)
@@ -295,7 +296,8 @@ function init() {
   // elements
   const score = document.querySelector('#score')
   const lives = document.querySelector('#lives')
-  const button = document.querySelector('button')
+  const button = document.querySelector('#startBtn')
+  const button2 = document.querySelector('#restartBtn')
   const updateP = document.querySelector('.updatesBoard', 'p')
 
   function update() {
@@ -310,13 +312,18 @@ function init() {
     updateP.innerHTML = 'Level 1'
   }
 
+  // make a proper reset button 
+  function resetPage() {
+    window.location.reload()
 
+  }
 
   // execution
 
   button.addEventListener('click', playGame)
   button.addEventListener('click', hideBtn)
   button.addEventListener('click', cuteSound)
+  button2.addEventListener('click', resetPage)
 
 
   // making new objects
@@ -363,19 +370,19 @@ function init() {
 
       frog.move()
       truck.moveBackwards()
-      truck.collision()
+      // truck.collision()
       truck2.moveBackwards()
-      truck2.collision()
+      //truck2.collision()
       truck3.moveBackwards()
-      truck3.collision()
+      //truck3.collision()
       car.moveBackwards()
-      car.collision()
+      //car.collision()
       car2.moveBackwards()
-      car2.collision()
+      //car2.collision()
       car3.moveBackwards()
-      car3.collision()
+      //car3.collision()
       car4.moveBackwards()
-      car4.collision()
+      //car4.collision()
       fastCat.move()
       fastCat.collision()
       log.move()
@@ -403,7 +410,7 @@ function init() {
       winTwo.finalWin()
       winThree.finalWin()
       winFour.finalWin()
-      water.collision()
+      //water.collision()
     }, 100)
 
   }
@@ -419,21 +426,21 @@ function init() {
     gameTimer = setInterval(() => {
       frog.move()
       truck.moveBackwards()
-      truck.collision()
+      //truck.collision()
       truck2.moveBackwards()
-      truck2.collision()
+      //truck2.collision()
       truck3.moveBackwards()
-      truck3.collision()
+      //truck3.collision()
       car.moveBackwards()
-      car.collision()
+      //car.collision()
       car2.moveBackwards()
-      car2.collision()
+      //car2.collision()
       car3.moveBackwards()
-      car3.collision()
+      //car3.collision()
       car4.moveBackwards()
-      car4.collision()
+      //car4.collision()
       fastCat.move()
-      fastCat.collision()
+      //fastCat.collision()
       log.move()
       log2.move()
       log3.move()
@@ -459,7 +466,7 @@ function init() {
       winTwo.finalWin()
       winThree.finalWin()
       winFour.finalWin()
-      water.collision()
+      //water.collision()
     }, 100)
 
   }
