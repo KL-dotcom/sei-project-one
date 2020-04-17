@@ -210,7 +210,7 @@ function init() {
         cells[this.positionY][this.positionX].classList.add('crash')
         setTimeout(() => {
           cells[y][x].classList.remove('crash')
-        }, 500)
+        }, 300)
       }
     }
     // removeCrash(y, x) {

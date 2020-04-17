@@ -8,8 +8,8 @@ body {
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-around;
-  background-color: lightpink;
-  color: brown;
+  background-color: #ffbcbc;
+  color: #363636;
   font-family: 'Patrick Hand', cursive;
   font-size: 30px;
 }
