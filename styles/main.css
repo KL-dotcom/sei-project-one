@@ -44,23 +44,16 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 50px;
 }
 
 .goth .updatesBoard {
-  height: 350px;
-  width: 400px;
   border: 16px solid red;
   border-radius: 0;
   background-color: grey;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center
 }
 
 .updatesBoard p {
-  padding: 50px;
   font-size: 30px;
 }
 
@@ -75,11 +68,8 @@ p {
 }
 
 .goth .container {
-  height: 250px;
-  width: 300px;
   border: 16px solid red;
   border-radius: 0;
-  text-align: center;
   background-color: grey;
 }
 
