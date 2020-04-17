@@ -286,12 +286,12 @@ function init() {
       if (this.positionY === kitty.positionY && this.positionX === kitty.positionX) {
         const x = kitty.positionX
         const y = kitty.positionY
-        cells[kitty.positionY][kitty.positionX].classList.remove('kitty')
+        cells[y][x].classList.remove('kitty')
         kitty.positionY = 9
         kitty.positionX = 4
         kitty.lives = kitty.lives - 1
         update()
-        cells[this.positionY][this.positionX].classList.add('crash')
+        cells[y][x].classList.add('crash')
         setTimeout(() => {
           cells[y][x].classList.remove('crash')
         }, 300)
