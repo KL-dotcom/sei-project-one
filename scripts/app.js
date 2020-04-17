@@ -36,14 +36,14 @@ function init() {
     },
     collision() {
       this.cellsWater.forEach(waterDiv => {
-        if (waterDiv.classList.contains('water') && waterDiv.classList.contains('frog') && waterDiv.classList.length === 2 || waterDiv.classList.contains('water') && waterDiv.classList.contains('frog') && waterDiv.classList.contains('water-ripples') && waterDiv.classList.length === 3) {
-          const y = frog.positionY
-          const x = frog.positionX
-          cells[frog.positionY][frog.positionX].classList.remove('frog')
-          cells[frog.positionY][frog.positionX].classList.add('splash')
-          frog.positionY = 9
-          frog.positionX = 4
-          frog.lives = frog.lives - 1
+        if (waterDiv.classList.contains('water') && waterDiv.classList.contains('kitty') && waterDiv.classList.length === 2 || waterDiv.classList.contains('water') && waterDiv.classList.contains('kitty') && waterDiv.classList.contains('water-ripples') && waterDiv.classList.length === 3) {
+          const y = kitty.positionY
+          const x = kitty.positionX
+          cells[kitty.positionY][kitty.positionX].classList.remove('kitty')
+          cells[kitty.positionY][kitty.positionX].classList.add('splash')
+          kitty.positionY = 9
+          kitty.positionX = 4
+          kitty.lives = kitty.lives - 1
           update()
 
           setTimeout(() => {
@@ -89,17 +89,17 @@ function init() {
 
   // making the frog
 
-  const frog = {
+  const kitty = {
     positionY: 9,
     positionX: 4,
     lives: 9,
     level: 1,
     keyPressed: null,
     handlePlayerInput(event) {
-      frog.keyPressed = event.keyCode
+      kitty.keyPressed = event.keyCode
     },
     move() {
-      cells[frog.positionY][frog.positionX].classList.remove('frog')
+      cells[kitty.positionY][kitty.positionX].classList.remove('kitty')
       const lastKeyPressed = this.keyPressed
       this.keyPressed = null
       switch (lastKeyPressed) {
@@ -122,7 +122,7 @@ function init() {
         default:
         //console.log('no player input')
       }
-      cells[frog.positionY][frog.positionX].classList.add('frog')
+      cells[kitty.positionY][kitty.positionX].classList.add('kitty')
     },
     numberOfLives() {
 
@@ -232,13 +232,13 @@ function init() {
       }
     }
     collision() {
-      if (this.positionY === frog.positionY && this.positionX === frog.positionX) {
-        const x = frog.positionX
-        const y = frog.positionY
-        cells[frog.positionY][frog.positionX].classList.remove('frog')
-        frog.positionY = 9
-        frog.positionX = 4
-        frog.lives = frog.lives - 1
+      if (this.positionY === kitty.positionY && this.positionX === kitty.positionX) {
+        const x = kitty.positionX
+        const y = kitty.positionY
+        cells[kitty.positionY][kitty.positionX].classList.remove('kitty')
+        kitty.positionY = 9
+        kitty.positionX = 4
+        kitty.lives = kitty.lives - 1
         update()
         cells[this.positionY][this.positionX].classList.add('crash')
         setTimeout(() => {
@@ -256,24 +256,24 @@ function init() {
       super(positionY, positionX, speed, name)
     }
     move(timestamp) {
-      const isFrogOnPlatform = this.positionY === frog.positionY && this.positionX === frog.positionX
+      const isKittyOnPlatform = this.positionY === kitty.positionY && this.positionX === kitty.positionX
       super.move(timestamp)
-      if (isFrogOnPlatform) {
-        cells[frog.positionY][frog.positionX].classList.remove('frog')
-        frog.positionY = this.positionY
-        frog.positionX = this.positionX
-        cells[frog.positionY][frog.positionX].classList.add('frog')
+      if (isKittyOnPlatform) {
+        cells[kitty.positionY][kitty.positionX].classList.remove('kitty')
+        kitty.positionY = this.positionY
+        kitty.positionX = this.positionX
+        cells[kitty.positionY][kitty.positionX].classList.add('kitty')
       }
 
     }
     moveBackwards(timestamp) {
-      const isFrogOnPlatform = this.positionY === frog.positionY && this.positionX === frog.positionX
+      const isKittyOnPlatform = this.positionY === kitty.positionY && this.positionX === kitty.positionX
       super.moveBackwards(timestamp)
-      if (isFrogOnPlatform) {
-        cells[frog.positionY][frog.positionX].classList.remove('frog')
-        frog.positionY = this.positionY
-        frog.positionX = this.positionX
-        cells[frog.positionY][frog.positionX].classList.add('frog')
+      if (isKittyOnPlatform) {
+        cells[kitty.positionY][kitty.positionX].classList.remove('kitty')
+        kitty.positionY = this.positionY
+        kitty.positionX = this.positionX
+        cells[kitty.positionY][kitty.positionX].classList.add('kitty')
       }
     }
   }
@@ -293,19 +293,19 @@ function init() {
       cells[this.positionY][this.positionX].classList.add('win')
     }
     youWon() {
-      if (this.positionY === frog.positionY && this.positionX === frog.positionX) {
+      if (this.positionY === kitty.positionY && this.positionX === kitty.positionX) {
         if (cells[this.positionY][this.positionX].classList.contains('won')) {
-          frog.positionY = 9
-          frog.positionX = 4
-          frog.lives = frog.lives - 1
+          kitty.positionY = 9
+          kitty.positionX = 4
+          kitty.lives = kitty.lives - 1
           update()
         } else {
-          cells[this.positionY][this.positionX].classList.remove('frog')
-          cells[frog.positionY][frog.positionX].classList.add('won')
+          cells[this.positionY][this.positionX].classList.remove('kitty')
+          cells[kitty.positionY][kitty.positionX].classList.add('won')
           winArray.push('win' + this.positionX)
           console.log(winArray, winArray.length)
-          frog.positionY = 9
-          frog.positionX = 4
+          kitty.positionY = 9
+          kitty.positionX = 4
           update()
         }
       }
@@ -314,11 +314,11 @@ function init() {
       cells[this.positionY][this.positionX].classList.remove('won')
     }
     finalWin() {
-      if (winArray.length === 4 && frog.level === 1) {
+      if (winArray.length === 4 && kitty.level === 1) {
         update()
         clearInterval(gameTimer)
         setTimeout(playGame2, 1500)
-        frog.level = frog.level + 1
+        kitty.level = kitty.level + 1
         updateP.innerHTML = 'Level 2'
 
       } else if (winArray.length === 8) {
@@ -344,7 +344,7 @@ function init() {
   function update() {
     // adding info to the elements
     score.innerHTML = winArray.length
-    lives.innerHTML = frog.lives
+    lives.innerHTML = kitty.lives
   }
 
 
@@ -415,7 +415,7 @@ function init() {
 
       const timestamp = Date.now()
 
-      frog.move()
+      kitty.move()
       blackCat.moveBackwards(timestamp)
       blackCat.collision()
       blackCat2.moveBackwards(timestamp)
@@ -447,7 +447,7 @@ function init() {
       fish8.moveBackwards(timestamp)
 
 
-      frog.numberOfLives()
+      kitty.numberOfLives()
       winOne.youWon()
       winTwo.youWon()
       winThree.youWon()
@@ -501,7 +501,7 @@ function init() {
     gameTimer = setInterval(() => {
       const timestamp = Date.now()
 
-      frog.move()
+      kitty.move()
       gothBlackCat.moveBackwards(timestamp)
       gothBlackCat.collision()
       gothBlackCat2.moveBackwards(timestamp)
@@ -529,7 +529,7 @@ function init() {
       gothBox4.move(timestamp)
       gothBox5.move(timestamp)
 
-      frog.numberOfLives()
+      kitty.numberOfLives()
       winOne.youWon()
       winTwo.youWon()
       winThree.youWon()
@@ -550,7 +550,7 @@ function init() {
   // event listeners
 
 
-  document.addEventListener('keydown', frog.handlePlayerInput)
+  document.addEventListener('keydown', kitty.handlePlayerInput)
 
 
   //messing with the screen

@@ -128,7 +128,7 @@ button {
   border: 0;
 }
 
-.frog {
+.kitty {
   background-image: url('https://media.giphy.com/media/2Yem5C2E1R2LjzJ6v2/giphy.gif');
   background-repeat: no-repeat;
   background-size: contain;
@@ -162,13 +162,13 @@ button {
   background-size: contain;
 }
 
-.frog.fish.water {
+.kitty.fish.water {
   background-image: url('https://media.giphy.com/media/2Yem5C2E1R2LjzJ6v2/giphy.gif'), url('https://media.giphy.com/media/jTlePYX9Pmkucvu1QO/giphy.gif');
   background-repeat: no-repeat;
   background-size: contain;
 }
 
-.water-ripples.fish.water.frog {
+.water-ripples.fish.water.kitty {
   background-image: url('https://media.giphy.com/media/2Yem5C2E1R2LjzJ6v2/giphy.gif'), url('https://media.giphy.com/media/jTlePYX9Pmkucvu1QO/giphy.gif'), url('https://media.giphy.com/media/6qpSkp6II9Vv8MWWnO/giphy.gif');
   background-repeat: no-repeat;
   background-size: contain;
@@ -180,7 +180,7 @@ button {
   background-size: contain;
 }
 
-.frog.box.water {
+.kitty.box.water {
   background-image: url('https://media.giphy.com/media/2Yem5C2E1R2LjzJ6v2/giphy.gif'), url('../assets/box-1.png');
   background-repeat: no-repeat;
   background-size: contain;
@@ -222,7 +222,7 @@ button {
   background-size: contain;
 }
 
-.grass.frog {
+.grass.kitty {
   background-image: url('https://media.giphy.com/media/7OX3QcMAcN4blQBxC5/giphy.gif'), url('https://media.giphy.com/media/2Yem5C2E1R2LjzJ6v2/giphy.gif');
   background-repeat: no-repeat;
   background-size: contain;
