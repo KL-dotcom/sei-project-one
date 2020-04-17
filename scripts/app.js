@@ -160,6 +160,39 @@ function init() {
   addGrassEffect(5, 4)
   addGrassEffect(7, 2)
 
+  function newBoard() {
+    for (let y = 0; y < height; y++) {
+      for (let x = 0; x < width; x++) {
+        cells[y][x].setAttribute('class', '')
+      }
+    }
+
+    water.placeWater()
+    water.topWater(0)
+    water.topWater(9)
+    water.topWater(8)
+    water.topWater(2)
+    water.topWater(4)
+    water.topWater(6)
+    addWaterEffect(1, 8)
+    addWaterEffect(2, 5)
+    addWaterEffect(3, 1)
+    addWaterEffect(4, 6)
+    addWaterEffect(0, 9)
+    addWaterEffect(0, 2)
+    addGrassEffect(8, 5)
+    addGrassEffect(6, 9)
+    addGrassEffect(9, 2)
+    addGrassEffect(5, 4)
+    addGrassEffect(7, 2)
+
+    winOne.toWin()
+    winTwo.toWin()
+    winThree.toWin()
+    winFour.toWin()
+
+  }
+
   //making classes
   class Entity {
     constructor(positionY, positionX, speed, name) {
@@ -213,9 +246,9 @@ function init() {
         }, 300)
       }
     }
-    // removeCrash(y, x) {
-    //   cells[y][x].classList.remove('crash')
-    // }
+    removeCrash(y, x) {
+      cells[y][x].classList.remove('crash')
+    }
   }
 
   class WaterPlatform extends Entity {
@@ -458,6 +491,7 @@ function init() {
 
 
   function playGame2() {
+    newBoard()
     makeGoth()
     winOne.resetWin()
     winTwo.resetWin()
