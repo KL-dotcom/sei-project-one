@@ -156,19 +156,19 @@ button {
   background-color: lightblue;
 }
 
-.water.log {
+.water.fish {
   background-image: url('https://media.giphy.com/media/jTlePYX9Pmkucvu1QO/giphy.gif');
   background-repeat: no-repeat;
   background-size: contain;
 }
 
-.frog.log.water {
+.frog.fish.water {
   background-image: url('https://media.giphy.com/media/2Yem5C2E1R2LjzJ6v2/giphy.gif'), url('https://media.giphy.com/media/jTlePYX9Pmkucvu1QO/giphy.gif');
   background-repeat: no-repeat;
   background-size: contain;
 }
 
-.water-ripples.log.water.frog {
+.water-ripples.fish.water.frog {
   background-image: url('https://media.giphy.com/media/2Yem5C2E1R2LjzJ6v2/giphy.gif'), url('https://media.giphy.com/media/jTlePYX9Pmkucvu1QO/giphy.gif'), url('https://media.giphy.com/media/6qpSkp6II9Vv8MWWnO/giphy.gif');
   background-repeat: no-repeat;
   background-size: contain;
@@ -234,7 +234,7 @@ button {
   background-size: contain;
 }
 
-.water-ripples.water.log {
+.water-ripples.water.fish {
   background-image: url('https://media.giphy.com/media/jTlePYX9Pmkucvu1QO/giphy.gif'), url('https://media.giphy.com/media/6qpSkp6II9Vv8MWWnO/giphy.gif');
   background-repeat: no-repeat;
   background-size: contain;
