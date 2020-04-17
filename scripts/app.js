@@ -1,5 +1,6 @@
 function init() {
 
+  //* making the board
   // get the grid
   const grid = document.querySelector('.grid')
   const cells = []
@@ -69,73 +70,7 @@ function init() {
   water.topWater(4)
   water.topWater(6)
 
-
-
-  // audio tag
-
-  const audio = document.querySelector('audio')
-
-  function cuteSound() {
-    audio.src = './assets/cute.mp3'
-    audio.play()
-  }
-
-  function gothSound() {
-    audio.src = './assets/goth.mp3'
-    audio.play()
-  }
-
-
-
-  // making the frog
-
-  const kitty = {
-    positionY: 9,
-    positionX: 4,
-    lives: 9,
-    level: 1,
-    keyPressed: null,
-    handlePlayerInput(event) {
-      kitty.keyPressed = event.keyCode
-    },
-    move() {
-      cells[kitty.positionY][kitty.positionX].classList.remove('kitty')
-      const lastKeyPressed = this.keyPressed
-      this.keyPressed = null
-      switch (lastKeyPressed) {
-        case 39:
-          if (this.positionX < width - 1) this.positionX++
-          //console.log('move right')
-          break
-        case 37:
-          if (this.positionX > 0) this.positionX--
-          //console.log('move left')
-          break
-        case 38:
-          if (this.positionY > 0) this.positionY--
-          //console.log('move up')
-          break
-        case 40:
-          if (this.positionY < width - 1) this.positionY++
-          //console.log('move down')
-          break
-        default:
-        //console.log('no player input')
-      }
-      cells[kitty.positionY][kitty.positionX].classList.add('kitty')
-    },
-    numberOfLives() {
-
-      if (this.lives === 0) {
-        clearInterval(gameTimer)
-        updateP.innerHTML = 'You Lose :('
-        audio.src = './assets/lose.mp3'
-        audio.play()
-      }
-    }
-  }
-
-  // * water effects 
+  // water effects 
 
   function addWaterEffect(pos1, pos2) {
     cells[pos1][pos2].classList.add('water-ripples')
@@ -148,7 +83,7 @@ function init() {
   addWaterEffect(0, 9)
   addWaterEffect(0, 2)
 
-  // * grass effects
+  // grass effects
 
   function addGrassEffect(pos1, pos2) {
     cells[pos1][pos2].classList.add('grass')
@@ -192,8 +127,124 @@ function init() {
     winFour.toWin()
 
   }
+  // the side bar with lives and the button
 
-  //making classes
+  // elements
+  const score = document.querySelector('#score')
+  const lives = document.querySelector('#lives')
+  const button = document.querySelector('#startBtn')
+  const button2 = document.querySelector('#restartBtn')
+  const updateP = document.querySelector('.updatesBoard', 'p')
+
+  function update() {
+    // adding info to the elements
+    score.innerHTML = winArray.length
+    lives.innerHTML = kitty.lives
+  }
+
+
+  function hideBtn() {
+    button.style.visibility = 'hidden'
+    updateP.innerHTML = 'Level 1'
+  }
+
+  // make a proper reset button 
+  function resetPage() {
+    window.location.reload()
+    playGame()
+
+  }
+
+  // execution
+
+  button.addEventListener('click', playGame)
+  button.addEventListener('click', hideBtn)
+  button.addEventListener('click', cuteSound)
+  button2.addEventListener('click', resetPage)
+
+  // audio tag
+
+  const audio = document.querySelector('audio')
+
+  function cuteSound() {
+    audio.src = './assets/cute.mp3'
+    audio.play()
+  }
+
+  function gothSound() {
+    audio.src = './assets/goth.mp3'
+    audio.play()
+  }
+
+  // code for goth mode
+
+
+  // elements
+  const body = document.querySelector('body')
+
+
+  // execution
+
+  function makeGoth() {
+    body.classList.add('goth')
+  }
+
+
+  //* making the cat
+
+  const kitty = {
+    positionY: 9,
+    positionX: 4,
+    lives: 9,
+    level: 1,
+    keyPressed: null,
+    handlePlayerInput(event) {
+      kitty.keyPressed = event.keyCode
+    },
+    move() {
+      cells[kitty.positionY][kitty.positionX].classList.remove('kitty')
+      const lastKeyPressed = this.keyPressed
+      this.keyPressed = null
+      switch (lastKeyPressed) {
+        case 39:
+          if (this.positionX < width - 1) this.positionX++
+          //console.log('move right')
+          break
+        case 37:
+          if (this.positionX > 0) this.positionX--
+          //console.log('move left')
+          break
+        case 38:
+          if (this.positionY > 0) this.positionY--
+          //console.log('move up')
+          break
+        case 40:
+          if (this.positionY < width - 1) this.positionY++
+          //console.log('move down')
+          break
+        default:
+        //console.log('no player input')
+      }
+      cells[kitty.positionY][kitty.positionX].classList.add('kitty')
+    },
+    numberOfLives() {
+
+      if (this.lives === 0) {
+        clearInterval(gameTimer)
+        updateP.innerHTML = 'You lose, poor hungry Sammy :( '
+        audio.src = './assets/lose.mp3'
+        audio.play()
+      }
+    }
+  }
+
+  // event listener kitty
+
+  document.addEventListener('keydown', kitty.handlePlayerInput)
+
+
+  //* making classes
+
   class Entity {
     constructor(positionY, positionX, speed, name) {
       this.positionY = positionY
@@ -278,7 +329,7 @@ function init() {
     }
   }
 
-  // also a level two maybe to final win
+  // win code
 
   const winArray = []
 
@@ -324,51 +375,16 @@ function init() {
       } else if (winArray.length === 8) {
         update()
         clearInterval(gameTimer)
-        updateP.innerHTML = 'You Won!'
+        updateP.innerHTML = 'You Won! Sammy is no longer a hungry kitty!'
         audio.src = './assets/winner.mp3'
         audio.play()
       }
     }
   }
 
+  // * executing the game code
 
-  // the side bar with lives and the button
-
-  // elements
-  const score = document.querySelector('#score')
-  const lives = document.querySelector('#lives')
-  const button = document.querySelector('#startBtn')
-  const button2 = document.querySelector('#restartBtn')
-  const updateP = document.querySelector('.updatesBoard', 'p')
-
-  function update() {
-    // adding info to the elements
-    score.innerHTML = winArray.length
-    lives.innerHTML = kitty.lives
-  }
-
-
-  function hideBtn() {
-    button.style.visibility = 'hidden'
-    updateP.innerHTML = 'Level 1'
-  }
-
-  // make a proper reset button 
-  function resetPage() {
-    window.location.reload()
-    playGame()
-
-  }
-
-  // execution
-
-  button.addEventListener('click', playGame)
-  button.addEventListener('click', hideBtn)
-  button.addEventListener('click', cuteSound)
-  button2.addEventListener('click', resetPage)
-
-
-  // making new objects
+  // making new objects for level 1
 
   const winOne = new Win(0, 5)
   const winTwo = new Win(0, 3)
@@ -402,14 +418,18 @@ function init() {
   const box4 = new WaterPlatform(4, 5, 400, 'box')
   const box5 = new WaterPlatform(4, 7, 400, 'box')
 
-  winOne.toWin()
-  winTwo.toWin()
-  winThree.toWin()
-  winFour.toWin()
+
+
+  // level 1 execution
 
   let gameTimer
 
   function playGame() {
+    winOne.toWin()
+    winTwo.toWin()
+    winThree.toWin()
+    winFour.toWin()
+
 
     gameTimer = setInterval(() => {
 
@@ -461,6 +481,8 @@ function init() {
 
   }
 
+  // making the new objects for level 2
+
   const gothBlackCat = new Entity(8, 2, 400, 'black-cat')
   const gothBlackCat2 = new Entity(8, 5, 400, 'black-cat')
   const gothWhiteCat = new Entity(6, 1, 500, 'white-cat')
@@ -488,7 +510,7 @@ function init() {
   const gothBox4 = new WaterPlatform(4, 5, 400, 'box')
   const gothBox5 = new WaterPlatform(4, 7, 400, 'box')
 
-
+  // executing the game code for level 2
 
   function playGame2() {
     newBoard()
@@ -544,33 +566,35 @@ function init() {
   }
 
 
-  // if I set all of the calls within another function, then I can reset interval timer - could work, maybe set another button as reset time instead of re-writing the innerHTML
 
 
-  // event listeners
+  // * additional code
 
 
-  document.addEventListener('keydown', kitty.handlePlayerInput)
+  // // event listener kitty
 
-
-  //messing with the screen
-
-
-  // making the button
+  // document.addEventListener('keydown', kitty.handlePlayerInput)
 
 
 
 
 
-  // adding goth to the page
 
-  const body = document.querySelector('body')
 
-  function makeGoth() {
-    body.classList.add('goth')
-  }
 
-  //makeGoth()
+  // code for goth mode
+
+
+  // elements
+  // const body = document.querySelector('body')
+
+
+  // // execution
+
+  // function makeGoth() {
+  //   body.classList.add('goth')
+  // }
+
 
 
 }
