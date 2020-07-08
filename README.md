@@ -73,3 +73,7 @@ I'm really happy with how playable the game turned out, and how fun it is. I'm s
 
 This project was deployed using GitHub Pages:
 https://kristenlittle.com/sei-project-one/
+
+## Bugs
+
+* The Updates Board and the Container need to be fixed in position as at the moment the two divs are far apart on wider screens which does not look right.
