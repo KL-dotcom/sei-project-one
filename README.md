@@ -26,13 +26,32 @@ Kitty Food Dash is based off of the classic arcade game Frogger. The game compri
 
 #### First Level Theme:
 
-![Level 1 image](/assets/Level-1.png)
+![Level 1 image](assets/Level-1.png)
 
 #### Second Level Theme:
 
-![Level 2 image](/assets/Level-2.png)
+![Level 2 image](assets/Level-2.png)
 
 * I based the timings of the different game pieces on the two levels on a version of Frogger available online (froggerclassic.appspot.com). I used this as a guide, as I wanted to make sure the game was challenging, but also not too difficult and could be won with a similar skillset.
+
+### Example code snippets:
+
+#### Code for two dimensional grid creation:
+
+![grid code](assets/grid-code.png)
+
+#### Example of how movement is calculated, this one is the movement for the user. This is done with a switch statement for a keypress event and adding classes:
+
+![movement code](assets/user-movement.png)
+
+#### Code for calculating a collision with an enemy game piece (the other cats on the game board) plus adding in the collision animation using classes:
+
+![collision code](assets/collision-code.png)
+
+#### Code for the movement of non-user game pieces, plus `Date.now()` being defined in the game loop and passed to the game pieces:
+
+![movement code](assets/movement-code.png)
+![timestamp code](assets/timestamp-example.png)
 
 ## Key learnings
 
